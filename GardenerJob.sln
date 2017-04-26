@@ -24,6 +24,11 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "GardenerJob", ".", "{52BD40
 		SlnRelativePath = "..\GardenerJob\"
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".NMTool", ".NMTool", "{629F768B-99DB-43BC-9F91-5E907129BDD1}"
+	ProjectSection(SolutionItems) = preProject
+		SolutionSettings.xml = SolutionSettings.xml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

@@ -39,8 +39,13 @@
 
 <body>
 
-    <div id="wrapper">
+    <?php
+//Recupero il valore del parametro
+    $ID_RECORD = $_GET['idrecord'];
+  
+    ?>
 
+<div id="wrapper">
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
@@ -54,14 +59,12 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="index.html">
-
                     Gardener Job
                 </a>
             </div>
             <!-- /.navbar-header -->
-
             <ul class="nav navbar-top-links navbar-right">
-
+               
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
@@ -83,11 +86,9 @@
                 <!-- /.dropdown USER -->
             </ul>
             <!-- /.navbar-top-links -->
-
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-
                         <li>
                             <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
@@ -102,34 +103,24 @@
                         </li>
                         <li>
                             <a href="interventi.html"><i class="fa fa-leaf fa-fw"></i> Interventi</a>
-                        </li> 
-
+                        </li>
                         <li>
                             <a href="../pages_original/tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
                         </li>
                     </ul>
-
                 </div>
                 <!-- /.sidebar-collapse -->
             </div>
             <!-- /.navbar-static-side  -->
-
         </nav>
-
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    
-                    <h1 class="page-header"><i class="fa fa-group fa-1x"></i> Clienti 
-                        <button type="button" class="btn pull-right btn-success" onclick="location.href='newcliente.php';"><i class="fa fa-plus-circle"></i>Nuovo
-                        </button></h1>
-                                        
+                    <h1 class="page-header"><i class="fa fa-group fa-1x"></i> Clienti <small>\ Modifica</small></h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
-
             <!------------------------------------------------------------------------------------------------------------------------------------------------------->
-            
                         <?php
 error_reporting(0);
 $servername = "localhost";
@@ -137,14 +128,15 @@ $username = "u760134217_luca";
 $password = "wcallu86";
 $dbname = "u760134217_mf";
 $datatable = "HISTORY"; // MySQL table name
-
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-?>       
+?>
+
+            
 
 <?php
 
@@ -158,20 +150,25 @@ $rs_result = $conn->query($sql);
                     <div class="panel panel-green">
                         <div class="panel-heading">
                             Anagrafica Clienti
-
                         </div>
-
                         <!-- /.panel-heading -->
                         <div class="panel-body">
+
+                            <?php
+                            echo "Hai selezionato il record con ID = " . $ID_RECORD;
+                            ?>
+
+
+                            <!--
                             <table class="table table-striped table-bordered table-hover" id="dataTables-example" data-sort-name="Chilometri" data-sort-order="desc">
                                 <thead>
                                     <tr>
-                                        <th style="width:20px"></th>
-                                        <!--<th>ID</th>-->
-                                        <th style="width:100px">
+                                        <th></th>
+                                        <th>ID</th>
+                                        <th>
                                             <strong>Data</strong>
                                         </th>
-                                        <th style="width:100px">
+                                        <th>
                                             <strong>Chilometri</strong>
                                         </th>
                                         <th>
@@ -189,28 +186,25 @@ $rs_result = $conn->query($sql);
                                         <th>
                                             <strong>l/100Km</strong>
                                         </th>
-                                                                           
                                     </tr>
                                 </thead>
                                 <tbody>
-
                                     <?php
  while($row = $rs_result->fetch_assoc()) {
                                     ?>
+
                                     <tr>
-                                        <!-- <td><input type='checkbox' name='check[]' value='...' /></td> -->
+                                    
                                        
                                         <td>
-                                            <a href="modifycliente.php?idrecord=<? echo $row["ID"]; ?>" data-toggle="tooltip" title="Modifica" >
-                                                <p class="text-center">
-                                                    <i class="fa fa-edit fa-fw"></i>
-                                                </p>
+                                            <a href="clienti.php">
+                                                <p class="text-center"> <i class="fa fa-edit fa-fw"></i>modifica</p>
                                             </a>
                                         </td>
 
-                                        <!--<td>
+                                        <td>
                                             <? echo $row["ID"]; ?>
-                                        </td>-->
+                                        </td>
 
                                         <td>
                                             <div class="fontColor">
@@ -242,16 +236,21 @@ $rs_result = $conn->query($sql);
 };
                                     ?>
 
+
                                 </tbody>
                             </table>
-                          
 
-</div>
+
+                            -->
+                        </div>
                     </div>
                 </div>
             </div>
-            
-                        <!------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+
+
+            <!------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
         </div>
         <!-- /#page-wrapper -->
@@ -283,7 +282,7 @@ $rs_result = $conn->query($sql);
             $('#dataTables-example').DataTable({
 
                 //ordina i risultati
-                "order": [[2, "desc"]],
+                "order": [[1, "desc"]],
                 //abilita il response della tabella
                 responsive: true
            
@@ -295,9 +294,6 @@ $rs_result = $conn->query($sql);
                 var data = table.row(this).data();
               //  alert('You clicked on ' + data[1] + '\'s row');
             });
-
-
-            $('[data-toggle="tooltip"]').tooltip();
         });
     </script>
 
