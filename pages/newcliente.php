@@ -111,61 +111,88 @@
         </div>
         <!-- /.navbar-static-side  -->
     </nav>
-        <div id="page-wrapper">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header"><i class="fa fa-group fa-1x"></i> Clienti <small> \ Nuovo</small></h1> 
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header"><i class="fa fa-group fa-1x"></i> Clienti <small> \ Nuovo</small></h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+
+        <!------------------------------------------>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="panel panel-green">
+                    <div class="panel-heading">
+                        Nuovo Cliente
+                    </div>
+
+                    <!-- /.panel-heading dataTables-example-->
+                    <div class="panel-body">
+                        <form role="form" data-dpmaxz-eid="1">
+
+                            <div class="form-group">
+                                <label class="control-label">Nome *</label>
+                                <input type="text" class="form-control" id="name" placeholder="Nominativo del cliente" data-dpmaxz-eid="2" required>
+                                <label class="control-label">Riferimento *</label>
+                                <input type="text" class="form-control" id="riferimento" placeholder="Persona di riferimento" data-dpmaxz-eid="3" required>
+                               
+                            </div>
+                            <button type="submit" class="btn btn-default" data-dpmaxz-eid="4">Salva</button>
+                        </form>
+
+                    </div>
                 </div>
-                <!-- /.col-lg-12 -->
             </div>
         </div>
-        <!-- /#page-wrapper -->
-    </div>
-    <!-- /#wrapper -->
 
 
 
+                        <!------------------------------------------>
+                    </div>
+                    <!-- /#page-wrapper -->
+                </div>
+                <!-- /#wrapper -->
+                <!-- jQuery -->
+                <script src="../vendor/jquery/jquery.min.js"></script>
+
+                <!-- Bootstrap Core JavaScript -->
+                <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+                <!-- Metis Menu Plugin JavaScript -->
+                <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+
+                <!-- DataTables JavaScript -->
+                <script src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
+                <script src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+                <script src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
+
+                <!-- Custom Theme JavaScript -->
+                <script src="../dist/js/sb-admin-2.js"></script>
+
+                <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+                <script>
+                    $(document).ready(function () {
 
 
-    <!-- jQuery -->
-    <script src="../vendor/jquery/jquery.min.js"></script>
+                        $('#dataTables-example').DataTable({
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+                            //ordina i risultati
+                            "order": [[1, "desc"]],
+                            //abilita il response della tabella
+                            responsive: true
 
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+                        });
 
-    <!-- DataTables JavaScript -->
-    <script src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
-    <script src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
-    <script src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="../dist/js/sb-admin-2.js"></script>
-
-    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
-    <script>
-        $(document).ready(function () {
-          
-
-            $('#dataTables-example').DataTable({
-
-                //ordina i risultati
-                "order": [[1, "desc"]],
-                //abilita il response della tabella
-                responsive: true
-           
-            });
-
-            //evento che intercetta la selezione della riga
-            var table = $('#dataTables-example').DataTable();
-            $('#dataTables-example tbody').on('click', 'tr', function () {
-                var data = table.row(this).data();
-              //  alert('You clicked on ' + data[1] + '\'s row');
-            });
-        });
-    </script>
+                        //evento che intercetta la selezione della riga
+                        var table = $('#dataTables-example').DataTable();
+                        $('#dataTables-example tbody').on('click', 'tr', function () {
+                            var data = table.row(this).data();
+                            //  alert('You clicked on ' + data[1] + '\'s row');
+                        });
+                    });
+                </script>
 
 
 </body>
