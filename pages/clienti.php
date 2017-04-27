@@ -44,7 +44,7 @@
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
-            
+
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
@@ -61,7 +61,7 @@
 
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i> Ciao<i class="fa fa-caret-down"></i>
+                        <i class="fa fa-user fa-fw"></i><i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         <li>
@@ -99,7 +99,7 @@
                         </li>
                         <li>
                             <a href="interventi.html"><i class="fa fa-leaf fa-fw"></i> Interventi</a>
-                        </li> 
+                        </li>
 
                         <li>
                             <a href="../pages_original/tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
@@ -116,17 +116,19 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    
-                    <h1 class="page-header"><i class="fa fa-group fa-1x"></i> Clienti 
-                        <button type="button" class="btn pull-right btn-success" onclick="location.href='newcliente.php';"><i class="fa fa-plus-circle"></i> Nuovo
-                        </button></h1>
-                                        
+
+                    <h1 class="page-header"><i class="fa fa-group fa-1x"></i> Clienti
+                      <!--  <button type="button" class="btn pull-right btn-success" onclick="location.href='newcliente.php';"><i class="fa fa-plus-circle"></i> Nuovo
+                      </button></h1> -->
+
+                      <button type="button" class="btn pull-right btn-success" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus-circle"></i> Nuovo</button>
+</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
 
             <!------------------------------------------------------------------------------------------------------------------------------------------------------->
-            
+
                         <?php
 error_reporting(0);
 $servername = "localhost";
@@ -141,14 +143,14 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-?>       
+?>
 
 <?php
 
 $sql = "SELECT ID,DATE_FORMAT(`DATA`,'%d/%m/%Y') as DATA,`KMTOT`,`LITRI`,`KM`,`EURO`,`EURO_LITRO`,`LITRI_100KM` FROM HISTORY ORDER BY `KMTOT` DESC ";
 $rs_result = $conn->query($sql);
 ?>
-            
+
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">
@@ -254,19 +256,72 @@ $rs_result = $conn->query($sql);
 
                                 </tbody>
                             </table>
-                          
+
 
 </div>
                     </div>
                 </div>
             </div>
-            
-                        <!------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+<!------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
         </div>
         <!-- /#page-wrapper -->
 
     </div>
+
+<!-------------------------- NUOVO CLIENTE -------------------------------->
+    <!-- Modal -->
+     <div class="modal fade" id="myModal" role="dialog">
+       <div class="modal-dialog">
+
+         <!-- Modal content-->
+         <div class="modal-content">
+           <div class="modal-header">
+             <button type="button" class="close" data-dismiss="modal">&times;</button>
+             <h4 class="modal-title"></h4>
+           </div>
+           <div class="modal-body">
+
+<!--------------------------------- FORM NUOVO CLIENTE ---------------->
+
+<div class="panel panel-green">
+    <div class="panel-heading">
+        Nuovo Cliente
+    </div>
+
+    <!-- /.panel-heading dataTables-example-->
+    <div class="panel-body">
+        <form role="form" data-dpmaxz-eid="1" action="">
+
+            <div class="form-group">
+                <label class="control-label">Nome *</label>
+                <input type="text" class="form-control" id="name" placeholder="Nominativo del cliente" data-dpmaxz-eid="2" required>
+                <label class="control-label">Riferimento</label>
+                <input type="text" class="form-control" id="riferimento" placeholder="Persona di riferimento" data-dpmaxz-eid="3">
+
+            </div>
+            <button type="submit" class="btn btn-default" data-dpmaxz-eid="4">Salva</button>
+        </form>
+
+    </div>
+</div>
+
+<!------------------------------------------------------------------------------------------------>
+           </div>
+           <div class="modal-footer">
+             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+           </div>
+         </div>
+
+       </div>
+     </div>
+
+
+    <!---------------------------------------------------------------------->
+
+
     <!-- /#wrapper -->
     <!-- jQuery -->
     <script src="../vendor/jquery/jquery.min.js"></script>
@@ -288,7 +343,7 @@ $rs_result = $conn->query($sql);
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script>
         $(document).ready(function () {
-          
+
 
             $('#dtclienti').DataTable({
 
@@ -296,7 +351,7 @@ $rs_result = $conn->query($sql);
                 "order": [[2, "desc"]],
                 //abilita il response della tabella
                 responsive: true
-           
+
             });
 
             //evento che intercetta la selezione della riga

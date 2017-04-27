@@ -34,7 +34,6 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
 </head>
 
 <body>
@@ -130,14 +129,14 @@
 
                     <!-- /.panel-heading dataTables-example-->
                     <div class="panel-body">
-                        <form role="form" data-dpmaxz-eid="1">
+                        <form role="form" data-dpmaxz-eid="1" action="">
 
                             <div class="form-group">
                                 <label class="control-label">Nome *</label>
                                 <input type="text" class="form-control" id="name" placeholder="Nominativo del cliente" data-dpmaxz-eid="2" required>
                                 <label class="control-label">Riferimento *</label>
                                 <input type="text" class="form-control" id="riferimento" placeholder="Persona di riferimento" data-dpmaxz-eid="3" required>
-                               
+
                             </div>
                             <button type="submit" class="btn btn-default" data-dpmaxz-eid="4">Salva</button>
                         </form>
