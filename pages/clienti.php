@@ -159,7 +159,7 @@ $rs_result = $conn->query($sql);
 
                         <!-- /.panel-heading dataTables-example-->
                         <div class="panel-body">
-                            <table class="table table-striped table-bordered table-hover table-condensed table-responsive" id="dtclienti" style="width: auto;">
+                            <table width="100%" class="table table-striped table-bordered table-hover" id="dtclienti" >
 
                                 <thead>
                                     <tr>
@@ -211,28 +211,41 @@ $rs_result = $conn->query($sql);
 
                                         <td>
                                             <div class="fontColor">
-                                                <? echo $row["DATA"]; ?>
+                                                <?  $string = preg_replace('/\s+/', '', $row["DATA"]);
+                                                    echo $string; ?>
                                             </div>
                                         </td>
                                         <td>
                                             <strong>
-                                                <? echo $row["KMTOT"]; ?>
+                                                <?  $string = preg_replace('/\s+/', '', $row["KMTOT"]);
+                                                    echo $string; ?>
+
                                             </strong>
                                         </td>
                                         <td>
-                                            <? echo $row["LITRI"]; ?>
+                                            <?  $string = preg_replace('/\s+/', '', $row["LITRI"]);
+                                                echo $string; ?>
+
                                         </td>
                                         <td>
-                                            <? echo $row["KM"]; ?>
+                                            <?  $string = preg_replace('/\s+/', '', $row["KM"]);
+                                                echo $string; ?>
+
                                         </td>
                                         <td>
-                                            <? echo $row["EURO"]; ?>
+                                            <?  $string = preg_replace('/\s+/', '', $row["EURO"]);
+                                                echo $string; ?>
+
                                         </td>
                                         <td>
-                                            <? echo $row["EURO_LITRO"]; ?>
+                                            <?  $string = preg_replace('/\s+/', '', $row["EURO_LITRO"]);
+                                                echo $string; ?>
+
                                         </td>
                                         <td>
-                                            <? echo $row["LITRI_100KM"]; ?>
+                                            <?  $string = preg_replace('/\s+/', '', $row["LITRI_100KM"]);
+                                                echo $string; ?>
+
                                         </td>
                                     </tr>
                                     <?php
