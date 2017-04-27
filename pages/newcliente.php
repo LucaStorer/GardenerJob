@@ -41,76 +41,73 @@
 
 
 <div id="wrapper">
-    <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-        <div class="navbar-header">
-
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <!--<a class="navbar-brand" href="index.html">
-
-            Gardener Job
-            </a>-->
-
-            <a class="navbar-brand" href="index.html">
-                <img alt="Brand" src="../media/brend.png" height="30">
-            </a>
-        </div>
-        <!-- /.navbar-header -->
-        <ul class="nav navbar-top-links navbar-right">
-
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="index.html">
+                    <img alt="Brand" src="../media/brend.png" />
                 </a>
-                <ul class="dropdown-menu dropdown-user">
-                    <li>
-                        <a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-                    </li>
-                </ul>
-                <!-- /.dropdown-user -->
-            </li>
-            <!-- /.dropdown USER -->
-        </ul>
-        <!-- /.navbar-top-links -->
-        <div class="navbar-default sidebar" role="navigation">
-            <div class="sidebar-nav navbar-collapse">
-                <ul class="nav" id="side-menu">
-                    <li>
-                        <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                    </li>
-                    <li>
-                        <a href="clienti.php"><i class="fa fa-group fa-fw"></i> Clienti</a>
-                    </li>
-                    <li>
-                        <a href="risorse.html"><i class="fa fa-pied-piper fa-fw"></i> Risorse</a>
-                    </li>
-                    <li>
-                        <a href="prodotti.html"><i class="fa fa-flask fa-fw"></i> Prodotti</a>
-                    </li>
-                    <li>
-                        <a href="interventi.html"><i class="fa fa-leaf fa-fw"></i> Interventi</a>
-                    </li>
-                    <li>
-                        <a href="../pages_original/tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
-                    </li>
-                </ul>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">
+                    Gardener Job
+                </a>
             </div>
-            <!-- /.sidebar-collapse -->
-        </div>
-        <!-- /.navbar-static-side  -->
-    </nav>
+            <!-- /.navbar-header -->
+            <ul class="nav navbar-top-links navbar-right">
+               
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li>
+                            <a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown USER -->
+            </ul>
+            <!-- /.navbar-top-links -->
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li>
+                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="clienti.php"><i class="fa fa-group fa-fw"></i> Clienti</a>
+                        </li>
+                        <li>
+                            <a href="risorse.html"><i class="fa fa-pied-piper fa-fw"></i> Risorse</a>
+                        </li>
+                        <li>
+                            <a href="prodotti.html"><i class="fa fa-flask fa-fw"></i> Prodotti</a>
+                        </li>
+                        <li>
+                            <a href="interventi.html"><i class="fa fa-leaf fa-fw"></i> Interventi</a>
+                        </li>
+                        <li>
+                            <a href="../pages_original/tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side  -->
+        </nav>
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">

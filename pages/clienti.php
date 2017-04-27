@@ -44,7 +44,9 @@
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
-            
+                <a class="navbar-brand" href="index.html">
+                    <img alt="Brand" src="../media/brend.png" />
+                </a>
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
@@ -52,7 +54,8 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="index.html">
-                    <img alt="Brand" src="../media/brend.png" height="30" />
+
+                    Gardener Job
                 </a>
             </div>
             <!-- /.navbar-header -->
@@ -61,7 +64,7 @@
 
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i> Ciao<i class="fa fa-caret-down"></i>
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         <li>
@@ -118,7 +121,7 @@
                 <div class="col-lg-12">
                     
                     <h1 class="page-header"><i class="fa fa-group fa-1x"></i> Clienti 
-                        <button type="button" class="btn pull-right btn-success" onclick="location.href='newcliente.php';"><i class="fa fa-plus-circle"></i> Nuovo
+                        <button type="button" class="btn pull-right btn-success" onclick="location.href='newcliente.php';"><i class="fa fa-plus-circle"></i>Nuovo
                         </button></h1>
                                         
                 </div>
@@ -155,21 +158,21 @@ $rs_result = $conn->query($sql);
                     <div class="panel panel-green">
                         <div class="panel-heading">
                             Anagrafica Clienti
+
                         </div>
 
-                        <!-- /.panel-heading dataTables-example-->
+                        <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <table class="table table-striped table-bordered table-hover table-condensed table-responsive" id="dtclienti" style="width: auto;">
-
+                            <table class="table table-striped table-bordered table-hover" id="dataTables-example" data-sort-name="Chilometri" data-sort-order="desc">
                                 <thead>
                                     <tr>
                                         <th style="width:20px"></th>
                                         <!--<th>ID</th>-->
-                                        <th style="width:80px">
+                                        <th style="width:100px">
                                             <strong>Data</strong>
                                         </th>
-                                        <th style="width:80px">
-                                            Chilometri
+                                        <th style="width:100px">
+                                            <strong>Chilometri</strong>
                                         </th>
                                         <th>
                                             <strong>Litri</strong>
@@ -186,7 +189,7 @@ $rs_result = $conn->query($sql);
                                         <th>
                                             <strong>l/100Km</strong>
                                         </th>
-
+                                                                           
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -196,9 +199,9 @@ $rs_result = $conn->query($sql);
                                     ?>
                                     <tr>
                                         <!-- <td><input type='checkbox' name='check[]' value='...' /></td> -->
-
+                                       
                                         <td>
-                                            <a href="modifycliente.php?idrecord=<? echo $row["ID"]; ?>" data-toggle="tooltip" title="Modifica">
+                                            <a href="modifycliente.php?idrecord=<? echo $row["ID"]; ?>" data-toggle="tooltip" title="Modifica" >
                                                 <p class="text-center">
                                                     <i class="fa fa-edit fa-fw"></i>
                                                 </p>
@@ -277,7 +280,7 @@ $rs_result = $conn->query($sql);
         $(document).ready(function () {
           
 
-            $('#dtclienti').DataTable({
+            $('#dataTables-example').DataTable({
 
                 //ordina i risultati
                 "order": [[2, "desc"]],
@@ -287,8 +290,8 @@ $rs_result = $conn->query($sql);
             });
 
             //evento che intercetta la selezione della riga
-            var table = $('#dtclienti').DataTable();
-            $('#dtclienti tbody').on('click', 'tr', function () {
+            var table = $('#dataTables-example').DataTable();
+            $('#dataTables-example tbody').on('click', 'tr', function () {
                 var data = table.row(this).data();
               //  alert('You clicked on ' + data[1] + '\'s row');
             });
