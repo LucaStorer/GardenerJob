@@ -8,6 +8,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+    <link rel="shortcut icon" href="../media/favicon.ico">
+    <link rel="icon" type="image/png" href="../media/icon.png" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="../media/icon.png">
+
     <title>Gardener Job</title>
 
     <!-- Bootstrap Core CSS -->
@@ -293,20 +297,20 @@ $rs_result = $conn->query($sql);
 
     <!-- /.panel-heading dataTables-example-->
     <div class="panel-body">
-        <form role="form" data-dpmaxz-eid="1" action="">
+        <form role="form" data-dpmaxz-eid="1" action="../php/insert.php" name="insertcliente" method="post">
 
             <div class="form-group">
                 <label class="control-label">Nome *</label>
-                <input type="text" class="form-control" id="name" placeholder="Nominativo del cliente" data-dpmaxz-eid="2" required>
+                <input type="text" class="form-control" name="nome" placeholder="Nominativo del cliente" data-dpmaxz-eid="2" required>
                 <label class="control-label">Riferimento</label>
-                <input type="text" class="form-control" id="riferimento" placeholder="Persona di riferimento" data-dpmaxz-eid="3">
+                <input type="text" class="form-control" name="riferimento" placeholder="Persona di riferimento" data-dpmaxz-eid="3">
                 <label class="control-label">Tipo</label>
-                <select class="form-control" id="tipo" data-dpmaxz-eid="4" required="">
+                <select class="form-control" name="tipo" data-dpmaxz-eid="4" required="">
                   <option value="CLIENTE">CLIENTE</option>
                   <option value="PROSPECT">PROSPECT</option>
                 </select>
             </div>
-            <button type="submit" class="btn btn-default btn-success btn-block" data-dpmaxz-eid="5">Salva</button>
+            <button type="submit" class="btn btn-default btn-success btn-block" data-dpmaxz-eid="5" name="insertcliente">Salva</button>
         </form>
 
     </div>
