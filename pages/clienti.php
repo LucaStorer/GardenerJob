@@ -300,9 +300,13 @@ $rs_result = $conn->query($sql);
                 <input type="text" class="form-control" id="name" placeholder="Nominativo del cliente" data-dpmaxz-eid="2" required>
                 <label class="control-label">Riferimento</label>
                 <input type="text" class="form-control" id="riferimento" placeholder="Persona di riferimento" data-dpmaxz-eid="3">
-
+                <label class="control-label">Tipo</label>
+                <select class="form-control" id="tipo" data-dpmaxz-eid="4" required="">
+                  <option value="CLIENTE">CLIENTE</option>
+                  <option value="PROSPECT">PROSPECT</option>
+                </select>
             </div>
-            <button type="submit" class="btn btn-default" data-dpmaxz-eid="4">Salva</button>
+            <button type="submit" class="btn btn-default btn-success btn-block" data-dpmaxz-eid="5">Salva</button>
         </form>
 
     </div>
@@ -311,7 +315,7 @@ $rs_result = $conn->query($sql);
 <!------------------------------------------------------------------------------------------------>
            </div>
            <div class="modal-footer">
-             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+             <button type="button" class="btn btn-primary" data-dismiss="modal">Annulla</button>
            </div>
          </div>
 
