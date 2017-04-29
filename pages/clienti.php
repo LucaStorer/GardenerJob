@@ -134,25 +134,11 @@
             <!------------------------------------------------------------------------------------------------------------------------------------------------------->
 
                         <?php
-error_reporting(0);
-$servername = "localhost";
-$username = "u760134217_luca";
-$password = "wcallu86";
-$dbname = "u760134217_mf";
-$datatable = "HISTORY"; // MySQL table name
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-?>
 
-<?php
+include('../php/select.php');
 
-$sql = "SELECT ID,DATE_FORMAT(`DATA`,'%d/%m/%Y') as DATA,`KMTOT`,`LITRI`,`KM`,`EURO`,`EURO_LITRO`,`LITRI_100KM` FROM HISTORY ORDER BY `KMTOT` DESC ";
-$rs_result = $conn->query($sql);
+$rs_result = selectreq("clienti");
 ?>
 
             <!-- /.row -->
@@ -171,29 +157,17 @@ $rs_result = $conn->query($sql);
                                     <tr>
                                         <th style="width:20px"></th>
                                         <!--<th>ID</th>-->
-                                        <th style="width:80px">
-                                            <strong>Data</strong>
-                                        </th>
-                                        <th style="width:80px">
-                                            Chilometri
-                                        </th>
                                         <th>
-                                            <strong>Litri</strong>
-                                        </th>
-                                        <th>
-                                            <strong>Km Parz.</strong>
-                                        </th>
-                                        <th>
-                                            <strong>Euro</strong>
-                                        </th>
-                                        <th>
-                                            <strong>€/l</strong>
-                                        </th>
-                                        <th>
-                                            <strong>l/100Km</strong>
+                                            <strong>Cliente</strong>
                                         </th>
 
-                                    </tr>
+                                        <th>
+                                          riferimento
+                                        </th>
+                                        <th>
+                                          Tipo
+                                        </th>
+                                        </tr>
                                 </thead>
                                 <tbody>
 
@@ -203,56 +177,46 @@ $rs_result = $conn->query($sql);
                                     <tr>
                                         <!-- <td><input type='checkbox' name='check[]' value='...' /></td> -->
 
-                                        <td>
-                                            <a href="modifycliente.php?idrecord=<? echo $row["ID"]; ?>" data-toggle="tooltip" title="Modifica">
+                                      <!--  <td>
+                                            <a href="modifycliente.php?idrecord=<? echo $row["ID_CLIENTE"]; ?>" data-toggle="tooltip" title="Modifica">
                                                 <p class="text-center">
                                                     <i class="fa fa-edit fa-fw"></i>
                                                 </p>
                                             </a>
+                                        </td> -->
+
+                                        <td>
+                                          <p class="text-center">
+                                            <button type="button" class="btn btn-default btn-circle" data-toggle="modal"
+                                            data-target="#exampleModal"
+                                            data-id="<? echo $row["ID_CLIENTE"]; ?>"
+                                            data-nome="<? echo $row["NOME"]; ?>"
+                                            data-riferimento="<? echo $row["RIFERIMENTO"]; ?>"
+                                            data-tipo="<? echo $row["TIPO_CLIENTE"]; ?>"
+                                              ><i class="fa fa-edit fa-fw"></i></button>
+                                          </p>
+
                                         </td>
+
 
                                         <!--<td>
                                             <? echo $row["ID"]; ?>
                                         </td>-->
 
                                         <td>
+                                          <strong>
                                             <div class="fontColor">
-                                                <?  $string = preg_replace('/\s+/', '', $row["DATA"]);
-                                                    echo $string; ?>
+                                                <?  echo $row["NOME"]; ?>
                                             </div>
-                                        </td>
-                                        <td>
-                                            <strong>
-                                                <?  $string = preg_replace('/\s+/', '', $row["KMTOT"]);
-                                                    echo $string; ?>
-
                                             </strong>
                                         </td>
                                         <td>
-                                            <?  $string = preg_replace('/\s+/', '', $row["LITRI"]);
-                                                echo $string; ?>
-
+                                              <?  echo $row["RIFERIMENTO"]; ?>
                                         </td>
                                         <td>
-                                            <?  $string = preg_replace('/\s+/', '', $row["KM"]);
-                                                echo $string; ?>
-
+                                            <?  echo $row["TIPO_CLIENTE"]; ?>
                                         </td>
-                                        <td>
-                                            <?  $string = preg_replace('/\s+/', '', $row["EURO"]);
-                                                echo $string; ?>
 
-                                        </td>
-                                        <td>
-                                            <?  $string = preg_replace('/\s+/', '', $row["EURO_LITRO"]);
-                                                echo $string; ?>
-
-                                        </td>
-                                        <td>
-                                            <?  $string = preg_replace('/\s+/', '', $row["LITRI_100KM"]);
-                                                echo $string; ?>
-
-                                        </td>
                                     </tr>
                                     <?php
 };
@@ -331,6 +295,64 @@ $rs_result = $conn->query($sql);
     <!---------------------------------------------------------------------->
 
 
+
+    <!-------------------------- MODIFICA CLIENTE -------------------------------->
+        <!-- Modal -->
+         <div class="modal fade" id="exampleModal" role="dialog">
+           <div class="modal-dialog">
+
+             <!-- Modal content-->
+             <div class="modal-content">
+               <div class="modal-header">
+                 <button type="button" class="close" data-dismiss="modal">&times;</button>
+                 <h4 class="modal-title"></h4>
+               </div>
+               <div class="modal-body">
+
+    <!--------------------------------- FORM MODIFICA CLIENTE ---------------->
+
+    <div class="panel panel-green">
+        <div class="panel-heading">
+            Nuovo Cliente
+        </div>
+
+        <!-- /.panel-heading dataTables-example-->
+        <div class="panel-body">
+            <form role="form" data-dpmaxz-eid="1" action="../php/insert.php" name="insertcliente" method="post">
+
+                <div class="form-group">
+                    <label class="control-label">Nome *</label>
+                    <input type="text" class="form-control" name="nome" placeholder="Nominativo del cliente" data-dpmaxz-eid="2" id="nome" required>
+                    <label class="control-label">Riferimento</label>
+                    <input type="text" class="form-control" name="riferimento" placeholder="Persona di riferimento" id="riferimento" data-dpmaxz-eid="3">
+                    <label class="control-label">Tipo</label>
+                    <select class="form-control" name="tipo" data-dpmaxz-eid="4" id="tipo" required="">
+                      <option value="CLIENTE">CLIENTE</option>
+                      <option value="PROSPECT">PROSPECT</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-default btn-success btn-block" data-dpmaxz-eid="5" name="insertcliente">Salva</button>
+            </form>
+
+        </div>
+    </div>
+
+    <!------------------------------------------------------------------------------------------------>
+
+               </div>
+               <div class="modal-footer">
+                 <button type="button" class="btn btn-primary" data-dismiss="modal">Annulla</button>
+               </div>
+             </div>
+
+           </div>
+         </div>
+
+
+        <!---------------------------------------------------------------------->
+
+
+
     <!-- /#wrapper -->
     <!-- jQuery -->
     <script src="../vendor/jquery/jquery.min.js"></script>
@@ -357,7 +379,7 @@ $rs_result = $conn->query($sql);
             $('#dtclienti').DataTable({
 
                 //ordina i risultati
-                "order": [[2, "desc"]],
+                "order": [[1, "asc"]],
                 //abilita il response della tabella
                 responsive: true
 
@@ -373,6 +395,23 @@ $rs_result = $conn->query($sql);
 
             $('[data-toggle="tooltip"]').tooltip();
         });
+
+
+        $('#exampleModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var id = button.data('id') // Extract info from data-* attributes
+  var nome = button.data('nome')
+  var riferimento = button.data('riferimento')
+    var tipo = button.data('tipo')
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  var modal = $(this)
+//  modal.find('.modal-title').text('New message to ' + recipient)
+//  modal.find('.modal-body input').val(recipient)
+    modal.find('input[name="nome"]').val(nome)
+        modal.find('input[name="riferimento"]').val(riferimento)
+            modal.find('select[name="tipo"]').val(tipo)
+})
     </script>
 
 
