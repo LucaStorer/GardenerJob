@@ -172,7 +172,7 @@ $rs_result = selectreq("clienti");
                                 <tbody>
 
                                     <?php
- while($row = $rs_result->fetch_assoc()) {
+                                    while($row = $rs_result->fetch_assoc()) {
                                     ?>
                                     <tr>
                                         <!-- <td><input type='checkbox' name='check[]' value='...' /></td> -->
@@ -186,16 +186,18 @@ $rs_result = selectreq("clienti");
                                         </td> -->
 
                                         <td>
-                                          <p class="text-center">
-                                            <button type="button" class="btn btn-default btn-circle" data-toggle="modal"
+
+                                            <!--<button type="button" class="btn btn-link" data-toggle="modal"-->
+                                            <a href="#" data-toggle="modal"
                                             data-target="#exampleModal"
                                             data-id="<? echo $row["ID_CLIENTE"]; ?>"
                                             data-nome="<? echo $row["NOME"]; ?>"
                                             data-riferimento="<? echo $row["RIFERIMENTO"]; ?>"
-                                            data-tipo="<? echo $row["TIPO_CLIENTE"]; ?>"
-                                              ><i class="fa fa-edit fa-fw"></i></button>
+                                            data-tipo="<? echo $row["TIPO_CLIENTE"]; ?>">
+                                              <p class="text-center">
+                                              <i class="fa fa-edit fa-fw"></i>
                                           </p>
-
+</a>
                                         </td>
 
 
@@ -318,9 +320,11 @@ $rs_result = selectreq("clienti");
 
         <!-- /.panel-heading dataTables-example-->
         <div class="panel-body">
-            <form role="form" data-dpmaxz-eid="1" action="../php/insert.php" name="insertcliente" method="post">
+            <form role="form" data-dpmaxz-eid="0" action="../php/update.php" name="updatecliente" method="post">
 
                 <div class="form-group">
+
+                    <input type="text" class="from-control" name="id" id="id" hidden data-dpmaxz-eid="1">
                     <label class="control-label">Nome *</label>
                     <input type="text" class="form-control" name="nome" placeholder="Nominativo del cliente" data-dpmaxz-eid="2" id="nome" required>
                     <label class="control-label">Riferimento</label>
@@ -331,7 +335,7 @@ $rs_result = selectreq("clienti");
                       <option value="PROSPECT">PROSPECT</option>
                     </select>
                 </div>
-                <button type="submit" class="btn btn-default btn-success btn-block" data-dpmaxz-eid="5" name="insertcliente">Salva</button>
+                <button type="submit" class="btn btn-default btn-success btn-block" data-dpmaxz-eid="5" name="updatecliente">Aggiorna</button>
             </form>
 
         </div>
@@ -341,6 +345,8 @@ $rs_result = selectreq("clienti");
 
                </div>
                <div class="modal-footer">
+                   <button type="button" class="btn pull-left btn-danger" onclick="deleteRecord()"><i class="fa fa-trash-o"></i> ELIMINA</button>
+
                  <button type="button" class="btn btn-primary" data-dismiss="modal">Annulla</button>
                </div>
              </div>
@@ -396,7 +402,7 @@ $rs_result = selectreq("clienti");
             $('[data-toggle="tooltip"]').tooltip();
         });
 
-
+//evento che intercetta la finestra modale in modifica per passare i parametri
         $('#exampleModal').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget) // Button that triggered the modal
   var id = button.data('id') // Extract info from data-* attributes
@@ -408,10 +414,42 @@ $rs_result = selectreq("clienti");
   var modal = $(this)
 //  modal.find('.modal-title').text('New message to ' + recipient)
 //  modal.find('.modal-body input').val(recipient)
+modal.find('input[name="id"]').val(id)
     modal.find('input[name="nome"]').val(nome)
         modal.find('input[name="riferimento"]').val(riferimento)
             modal.find('select[name="tipo"]').val(tipo)
 })
+
+
+//Elimina il record in modifca nella finestra modale
+function deleteRecord(){
+
+var ID = document.getElementById("id").value;
+//alert(ID);
+var agree=confirm("ATTENZIONE! Sicuro di voler cancellare il Record?");
+    if (agree)
+        {
+            $.ajax
+            ({
+                type: "POST",
+                url: "../php/delete.php",
+                data: "tablename=clienti&"+"id="+ID,
+                success: function(msg)
+
+                {
+                //
+                //alert( "array Updated: " + msg );
+                location.reload(true);
+                }
+            });
+
+        }
+    else
+        {
+        return false ;
+        }
+
+}
     </script>
 
 
