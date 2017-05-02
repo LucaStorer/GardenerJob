@@ -136,7 +136,7 @@
                         <?php
 
 
-include('../php/select.php');
+include('../php/selectDB.php');
 
 $rs_result = selectreq("clienti");
 ?>
@@ -242,7 +242,7 @@ $rs_result = selectreq("clienti");
 
     <!-- /.panel-heading dataTables-example-->
     <div class="panel-body">
-        <form role="form" data-dpmaxz-eid="1" action="../php/insert.php" name="insertcliente" method="post">
+        <form role="form" data-dpmaxz-eid="1" action="../php/clienteDB.php" name="insertcliente" method="post">
 
             <div class="form-group">
                 <label class="control-label">Nome *</label>

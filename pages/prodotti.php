@@ -136,7 +136,7 @@
                         <?php
 
 
-include('../php/select.php');
+include('../php/selectDB.php');
 
 $rs_result = selectreq("prodotti");
 ?>
@@ -151,7 +151,7 @@ $rs_result = selectreq("prodotti");
 
                         <!-- /.panel-heading dataTables-example-->
                         <div class="panel-body">
-                            <table width="100%" class="table table-striped table-bordered table-hover" id="dtclienti" >
+                            <table width="100%" class="table table-striped table-bordered table-hover" id="dtprodotti" >
 
                                 <thead>
                                     <tr>
@@ -166,6 +166,15 @@ $rs_result = selectreq("prodotti");
                                         </th>
                                         <th>
                                           categoria
+                                        </th>
+                                        <th>
+                                          In uso
+                                        </th>
+                                        <th>
+                                          Prezzo €
+                                        </th>
+                                        <th>
+                                          U.M.
                                         </th>
                                         </tr>
                                 </thead>
@@ -182,7 +191,10 @@ $rs_result = selectreq("prodotti");
                                             data-idrecord="<? echo $row["ID"]; ?>"
                                             data-nome="<? echo $row["NOME"]; ?>"
                                             data-marca="<? echo $row["MARCA"]; ?>"
-                                            data-categoria="<? echo $row["CATEGORIA"]; ?>">
+                                            data-categoria="<? echo $row["CATEGORIA"]; ?>"
+                                              data-in_uso="<? echo $row["IN_USO"]; ?>"
+                                                data-prezzo="<? echo $row["PREZZO"]; ?>"
+                                                  data-um="<? echo $row["UM"]; ?>">
                                               <p class="text-center">
                                               <i class="fa fa-edit fa-fw"></i>
                                           </p>
@@ -200,6 +212,15 @@ $rs_result = selectreq("prodotti");
                                         </td>
                                         <td>
                                             <?  echo $row["CATEGORIA"]; ?>
+                                        </td>
+                                        <td>
+                                            <?  echo $row["IN_USO"]; ?>
+                                        </td>
+                                        <td>
+                                            <?  echo $row["PREZZO"]; ?>
+                                        </td>
+                                        <td>
+                                            <?  echo $row["UM"]; ?>
                                         </td>
 
                                     </tr>
@@ -220,7 +241,7 @@ $rs_result = selectreq("prodotti");
 
     </div>
 
-<!-------------------------- NUOVO CLIENTE -------------------------------->
+<!-------------------------- NUOVO PRODOTTO -------------------------------->
     <!-- Modal -->
      <div class="modal fade" id="myModal" role="dialog">
        <div class="modal-dialog">
@@ -233,7 +254,7 @@ $rs_result = selectreq("prodotti");
            </div>
            <div class="modal-body">
 
-<!--------------------------------- FORM NUOVO CLIENTE ---------------->
+<!--------------------------------- FORM NUOVO PRODOTTO ---------------->
 
 <div class="panel panel-yellow">
     <div class="panel-heading">
@@ -242,7 +263,7 @@ $rs_result = selectreq("prodotti");
 
     <!-- /.panel-heading dataTables-example-->
     <div class="panel-body">
-        <form role="form" data-dpmaxz-eid="1" action="../php/insert.php" name="insertprodotto" method="post">
+        <form role="form" data-dpmaxz-eid="1" action="../php/prodottoDB.php" name="insertprodotto" method="post">
 
             <div class="form-group">
                 <label class="control-label">Nome *</label>
@@ -253,6 +274,29 @@ $rs_result = selectreq("prodotti");
                 <select class="form-control" name="categoria" data-dpmaxz-eid="4" required="">
                   <option value="DISERBANTE">DISERBANTE</option>
                   <option value="CONCIME">CONCIME</option>
+                </select>
+
+<div class="col-lg-6">
+
+                <label class="control-label">prezzo €</label>
+<div class="input-group">
+    <span class="input-group-addon">€</span>
+                <input type="text" class="form-control" name="prezzo" placeholder="Euro" data-dpmaxz-eid="2" value="0.0">
+                </div>
+  </div>
+  <div class="col-lg-6">
+                <label class="control-label">U.M.</label>
+                <select class="form-control" name="um" data-dpmaxz-eid="4" placeholder="Unità di misura">
+                  <option value="PZ">PZ</option>
+                  <option value="KG">KG</option>
+                  <option value="L">L</option>
+                  <option value="g">g</option>
+                </select>
+  </div>
+                <label class="control-label">In Uso</label>
+                <select class="form-control" name="in_uso" data-dpmaxz-eid="4" required="">
+                  <option value="SI">SI</option>
+                  <option value="NO">NO</option>
                 </select>
             </div>
             <button type="submit" class="btn btn-default btn-success btn-block" data-dpmaxz-eid="5" name="insertprodotto">Salva</button>
@@ -275,7 +319,7 @@ $rs_result = selectreq("prodotti");
 
 
 
-    <!-------------------------- MODIFICA CLIENTE -------------------------------->
+    <!-------------------------- MODIFICA PRODOTTO -------------------------------->
         <!-- Modal -->
          <div class="modal fade" id="exampleModal" role="dialog">
            <div class="modal-dialog">
@@ -288,7 +332,7 @@ $rs_result = selectreq("prodotti");
                </div>
                <div class="modal-body">
 
-    <!--------------------------------- FORM MODIFICA CLIENTE ---------------->
+    <!--------------------------------- FORM MODIFICA PRODOTTO ---------------->
 
     <div class="panel panel-yellow">
         <div class="panel-heading">
@@ -311,9 +355,32 @@ $rs_result = selectreq("prodotti");
                       <option value="DISERBANTE">DISERBANTE</option>
                       <option value="CONCIME">CONCIME</option>
                     </select>
+
+<div class="col-lg-6">
+                    <label class="control-label">prezzo €</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">€</span>
+                    <input type="text" class="form-control" name="prezzo" id="prezzo" placeholder="Euro" data-dpmaxz-eid="6">
+                  </div>
+  </div>
+  <div class="col-lg-6">
+                    <label class="control-label">U.M.</label>
+                    <select class="form-control" name="um" id="um" data-dpmaxz-eid="7" placeholder="Unità di misura">
+                      <option value="PZ">PZ</option>
+                      <option value="KG">KG</option>
+                      <option value="L">L</option>
+                      <option value="g">g</option>
+                    </select>
+  </div>
+
+                    <label class="control-label">In Uso</label>
+                    <select class="form-control" name="in_uso" id="in_uso" data-dpmaxz-eid="5" required="">
+                      <option value="SI">SI</option>
+                      <option value="NO">NO</option>
+                    </select>
                 </div>
-                <button type="submit" class="btn btn-default btn-success pull-right" data-dpmaxz-eid="5" name="updateprodotto">Aggiorna</button>
-                    <button type="submit" class="btn pull-left btn-danger"  data-dpmaxz-eid="6" name="deleteprodotto"><i class="fa fa-trash-o"></i> ELIMINA</button>
+                <button type="submit" class="btn btn-default btn-success pull-right" data-dpmaxz-eid="8" name="updateprodotto">Aggiorna</button>
+                    <button type="submit" class="btn pull-left btn-danger"  data-dpmaxz-eid="9" name="deleteprodotto"><i class="fa fa-trash-o"></i> ELIMINA</button>
             </form>
         </div>
     </div>
@@ -360,7 +427,7 @@ $rs_result = selectreq("prodotti");
         $(document).ready(function () {
 
 
-            $('#dtclienti').DataTable({
+            $('#dtprodotti').DataTable({
 
                 //ordina i risultati
                 "order": [[1, "asc"]],
@@ -370,8 +437,8 @@ $rs_result = selectreq("prodotti");
             });
 
             //evento che intercetta la selezione della riga
-            var table = $('#dtclienti').DataTable();
-            $('#dtclienti tbody').on('click', 'tr', function () {
+            var table = $('#dtprodotti').DataTable();
+            $('#dtprodotti tbody').on('click', 'tr', function () {
                 var data = table.row(this).data();
               //  alert('You clicked on ' + data[1] + '\'s row');
             });
@@ -381,12 +448,17 @@ $rs_result = selectreq("prodotti");
         });
 
 //evento che intercetta la finestra modale in modifica per passare i parametri
-        $('#exampleModal').on('show.bs.modal', function (event) {
+$('#exampleModal').on('show.bs.modal', function (event) {
+
   var button = $(event.relatedTarget) // Button that triggered the modal
   var id = button.data('idrecord') // Extract info from data-* attributes
   var nome = button.data('nome')
   var marca = button.data('marca')
-    var categoria = button.data('categoria')
+  var categoria = button.data('categoria')
+  var in_uso = button.data('in_uso')
+  var prezzo = button.data('prezzo')
+  var um = button.data('um')
+
   // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
   // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
   var modal = $(this)
@@ -396,6 +468,11 @@ $rs_result = selectreq("prodotti");
   modal.find('input[name="nome"]').val(nome)
   modal.find('input[name="marca"]').val(marca)
   modal.find('select[name="categoria"]').val(categoria)
+  modal.find('select[name="in_uso"]').val(in_uso)
+  modal.find('input[name="prezzo"]').val(prezzo)
+  modal.find('select[name="um"]').val(um)
+
+
 })
 
 

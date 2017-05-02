@@ -2,12 +2,15 @@
  include('connectionDB.php');
 
  // data insert code starts here.
-if(isset($_POST['insertcliente']))
+if(isset($_POST['insertprodotto']))
 {
 
        $nome = $_POST['nome'];
-        $riferimento = $_POST['riferimento'];
-        $tipo = $_POST['tipo'];
+        $marca = $_POST['marca'];
+        $categoria = $_POST['categoria'];
+          $in_uso = $_POST['in_uso'];
+            $prezzo = $_POST['prezzo'];
+              $um = $_POST['um'];
 
        // Create connection
        $conn = mysqli_connect($servername, $username, $password, $dbname);
@@ -16,23 +19,23 @@ if(isset($_POST['insertcliente']))
            die("Connection failed: " . mysqli_connect_error());
        }
 
-       $sql = "INSERT INTO clienti (NOME, RIFERIMENTO, TIPO_CLIENTE)
-       VALUES ('$nome','$riferimento', '$tipo')";
+       $sql = "INSERT INTO prodotti (NOME, MARCA, CATEGORIA,IN_USO,PREZZO,UM)
+       VALUES ('$nome','$marca', '$categoria', '$in_uso', '$prezzo','$um')";
 
        if (mysqli_query($conn, $sql)) {
           // echo "New record created successfully";
 
           ?>
  <script>
- alert('Cliente aggiunto con Successo');
-        window.location='../pages/clienti.php'
+ alert('Prodotto aggiunto con Successo');
+        window.location='../pages/prodotti.php'
        </script>
  <?php
        } else {
         ?>
   <script>
-  alert('Errore inserimento Cliente');
-        window.location='../pages/clienti.php'
+  alert('Errore inserimento Prodotto');
+        window.location='../pages/prodotti.php'
         </script>
   <?php
   // echo "Error: " . $sql . "<br>" . mysqli_error($conn);
@@ -44,7 +47,7 @@ if(isset($_POST['insertcliente']))
        ?>
      <script>
   //   alert('altro bottone...');
-       window.location='../pages/clienti.php'
+       window.location='../pages/prodotti.php'
        </script>
      <?php
 
@@ -53,13 +56,16 @@ if(isset($_POST['insertcliente']))
 //-------------------------------------------------------------------------------------
 
  // data insert code starts here.
-if(isset($_POST['updatecliente']))
+if(isset($_POST['updateprodotto']))
 {
 
         $idrecord =  $_POST['idrecord'];
-       $nome = $_POST['nome'];
-        $riferimento = $_POST['riferimento'];
-        $tipo = $_POST['tipo'];
+        $nome = $_POST['nome'];
+        $marca = $_POST['marca'];
+        $categoria = $_POST['categoria'];
+        $in_uso = $_POST['in_uso'];
+          $prezzo = $_POST['prezzo'];
+            $um = $_POST['um'];
 
        // Create connection
        $conn = mysqli_connect($servername, $username, $password, $dbname);
@@ -68,23 +74,23 @@ if(isset($_POST['updatecliente']))
            die("Connection failed: " . mysqli_connect_error());
        }
 
-       $sql = "UPDATE clienti SET NOME='$nome', RIFERIMENTO='$riferimento', TIPO_CLIENTE='$tipo' WHERE ID = $idrecord";
+       $sql = "UPDATE prodotti SET NOME='$nome', MARCA='$marca', CATEGORIA='$categoria',IN_USO='$in_uso',PREZZO='$prezzo',UM='$um' WHERE ID = $idrecord";
 
        if (mysqli_query($conn, $sql)) {
           // echo "New record created successfully";
 
           ?>
  <script>
- alert('Cliente modificato con Successo');
-        window.location='../pages/clienti.php'
+ alert('Prodotto modificato con Successo');
+        window.location='../pages/prodotti.php'
        </script>
  <?php
        } else {
         ?>
   <script>
-  alert('Errore modifica Cliente');
+  alert('Errore modifica Prodotto');
   alert('<? echo "Error: " . $sql . "<br>" . mysqli_error($conn); ?>');
-        window.location='../pages/clienti.php'
+        window.location='../pages/prodotti.php'
         </script>
   <?php
    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
@@ -96,7 +102,7 @@ if(isset($_POST['updatecliente']))
        ?>
      <script>
   //   alert('altro bottone...');
-    //   window.location='../pages/clienti.php'
+    //   window.location='../pages/prodotti.php'
        </script>
      <?php
 
@@ -105,7 +111,7 @@ if(isset($_POST['updatecliente']))
 //-------------------------------------------------------------------------------------
 
      // data insert code starts here.
-    if(isset($_POST['deletecliente']))
+    if(isset($_POST['deleteprodotto']))
     {
 
     $idrecord =  $_POST['idrecord'];
@@ -118,8 +124,8 @@ if(isset($_POST['updatecliente']))
                die("Connection failed: " . mysqli_connect_error());
            }
 
-        //   $sql = "DELETE FROM $tablename WHERE ID_CLIENTE = $id";
-       $sql = "UPDATE clienti SET `DELETE` = 1 WHERE ID = $idrecord";
+
+       $sql = "UPDATE prodotti SET `DELETE` = 1 WHERE ID = $idrecord";
 
 
 
@@ -128,8 +134,8 @@ if(isset($_POST['updatecliente']))
 
               ?>
      <script>
-     alert('Cliente eliminato');
-            window.location='../pages/clienti.php'
+     alert('Prodotto eliminato');
+            window.location='../pages/prodotti.php'
            </script>
      <?php
            } else {
@@ -137,7 +143,7 @@ if(isset($_POST['updatecliente']))
       <script>
       alert('Errore eliminazione');
       alert('<? echo "Error: " . $sql . "<br>" . mysqli_error($conn); ?>');
-            window.location='../pages/clienti.php'
+            window.location='../pages/prodotti.php'
             </script>
       <?php
        echo "Error: " . $sql . "<br>" . mysqli_error($conn);

@@ -3,7 +3,7 @@
 function selectreq($tablename)
 {
 
-include('connection.php');
+include('connectionDB.php');
 
 
   $conn = mysqli_connect($servername, $username, $password, $dbname);
