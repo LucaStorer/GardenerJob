@@ -1,8 +1,10 @@
 <?php
  include('connection.php');
 
+ // data insert code starts here.
+if(isset($_POST['deletecliente']))
+{
 
-$tablename = $_POST['tablename'];
 $id =  $_POST['id'];
 
 
@@ -13,7 +15,10 @@ $id =  $_POST['id'];
            die("Connection failed: " . mysqli_connect_error());
        }
 
-       $sql = "DELETE FROM $tablename WHERE ID_CLIENTE = $id";
+    //   $sql = "DELETE FROM $tablename WHERE ID_CLIENTE = $id";
+   $sql = "UPDATE clienti SET `DELETE` = 1 WHERE `ID` = $id";
+
+
 
        if (mysqli_query($conn, $sql)) {
           // echo "New record created successfully";
@@ -37,6 +42,6 @@ $id =  $_POST['id'];
 
        mysqli_close($conn);
 
-
+}
 
  ?>

@@ -18,7 +18,7 @@ $id =  $_POST['id'];
            die("Connection failed: " . mysqli_connect_error());
        }
 
-       $sql = "UPDATE clienti SET NOME='$nome', RIFERIMENTO='$riferimento', TIPO_CLIENTE='$tipo' WHERE ID_CLIENTE = $id";
+       $sql = "UPDATE clienti SET NOME='$nome', RIFERIMENTO='$riferimento', TIPO_CLIENTE='$tipo' WHERE ID = $id";
 
        if (mysqli_query($conn, $sql)) {
           // echo "New record created successfully";
