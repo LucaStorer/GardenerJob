@@ -121,11 +121,11 @@
             <div class="row">
                 <div class="col-lg-12">
 
-                    <h1 class="page-header"><i class="fa fa-group fa-1x"></i> Clienti
+                    <h1 class="page-header"><i class="fa fa-flask fa-1x"></i> Prodotti
                       <!--  <button type="button" class="btn pull-right btn-success" onclick="location.href='newcliente.php';"><i class="fa fa-plus-circle"></i> Nuovo
                       </button></h1> -->
 
-                      <button type="button" class="btn pull-right btn-success" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus-circle"></i> Nuovo</button>
+                      <button type="button" class="btn pull-right btn-warning" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus-circle"></i> Nuovo</button>
 </h1>
                 </div>
                 <!-- /.col-lg-12 -->
@@ -138,15 +138,15 @@
 
 include('../php/select.php');
 
-$rs_result = selectreq("clienti");
+$rs_result = selectreq("prodotti");
 ?>
 
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="panel panel-green">
+                    <div class="panel panel-yellow">
                         <div class="panel-heading">
-                            Anagrafica Clienti
+                            Anagrafica Prodotti
                         </div>
 
                         <!-- /.panel-heading dataTables-example-->
@@ -158,14 +158,14 @@ $rs_result = selectreq("clienti");
                                         <th style="width:20px"></th>
                                         <!--<th>ID</th>-->
                                         <th>
-                                            <strong>Cliente</strong>
+                                            <strong>Prodotto</strong>
                                         </th>
 
                                         <th>
-                                          riferimento
+                                          marca
                                         </th>
                                         <th>
-                                          Tipo
+                                          categoria
                                         </th>
                                         </tr>
                                 </thead>
@@ -181,8 +181,8 @@ $rs_result = selectreq("clienti");
                                             data-target="#exampleModal"
                                             data-idrecord="<? echo $row["ID"]; ?>"
                                             data-nome="<? echo $row["NOME"]; ?>"
-                                            data-riferimento="<? echo $row["RIFERIMENTO"]; ?>"
-                                            data-tipo="<? echo $row["TIPO_CLIENTE"]; ?>">
+                                            data-marca="<? echo $row["MARCA"]; ?>"
+                                            data-categoria="<? echo $row["CATEGORIA"]; ?>">
                                               <p class="text-center">
                                               <i class="fa fa-edit fa-fw"></i>
                                           </p>
@@ -196,10 +196,10 @@ $rs_result = selectreq("clienti");
                                             </strong>
                                         </td>
                                         <td>
-                                              <?  echo $row["RIFERIMENTO"]; ?>
+                                              <?  echo $row["MARCA"]; ?>
                                         </td>
                                         <td>
-                                            <?  echo $row["TIPO_CLIENTE"]; ?>
+                                            <?  echo $row["CATEGORIA"]; ?>
                                         </td>
 
                                     </tr>
@@ -235,27 +235,27 @@ $rs_result = selectreq("clienti");
 
 <!--------------------------------- FORM NUOVO CLIENTE ---------------->
 
-<div class="panel panel-green">
+<div class="panel panel-yellow">
     <div class="panel-heading">
-        Nuovo Cliente
+        Nuovo Prodotto
     </div>
 
     <!-- /.panel-heading dataTables-example-->
     <div class="panel-body">
-        <form role="form" data-dpmaxz-eid="1" action="../php/insert.php" name="insertcliente" method="post">
+        <form role="form" data-dpmaxz-eid="1" action="../php/insert.php" name="insertprodotto" method="post">
 
             <div class="form-group">
                 <label class="control-label">Nome *</label>
-                <input type="text" class="form-control" name="nome" placeholder="Nominativo del cliente" data-dpmaxz-eid="2" required>
-                <label class="control-label">Riferimento</label>
-                <input type="text" class="form-control" name="riferimento" placeholder="Persona di riferimento" data-dpmaxz-eid="3">
-                <label class="control-label">Tipo</label>
-                <select class="form-control" name="tipo" data-dpmaxz-eid="4" required="">
-                  <option value="CLIENTE">CLIENTE</option>
-                  <option value="PROSPECT">PROSPECT</option>
+                <input type="text" class="form-control" name="nome" placeholder="Nome del prodotto" data-dpmaxz-eid="2" required>
+                <label class="control-label">Marca</label>
+                <input type="text" class="form-control" name="marca" placeholder="marca" data-dpmaxz-eid="3">
+                <label class="control-label">Categoria</label>
+                <select class="form-control" name="categoria" data-dpmaxz-eid="4" required="">
+                  <option value="DISERBANTE">DISERBANTE</option>
+                  <option value="CONCIME">CONCIME</option>
                 </select>
             </div>
-            <button type="submit" class="btn btn-default btn-success btn-block" data-dpmaxz-eid="5" name="insertcliente">Salva</button>
+            <button type="submit" class="btn btn-default btn-success btn-block" data-dpmaxz-eid="5" name="insertprodotto">Salva</button>
         </form>
 
     </div>
@@ -290,30 +290,30 @@ $rs_result = selectreq("clienti");
 
     <!--------------------------------- FORM MODIFICA CLIENTE ---------------->
 
-    <div class="panel panel-green">
+    <div class="panel panel-yellow">
         <div class="panel-heading">
-            Modifica Cliente
+            Modifica Prodotto
         </div>
 
         <!-- /.panel-heading dataTables-example-->
         <div class="panel-body">
-            <form role="form" data-dpmaxz-eid="0" action="../php/clienteDB.php" name="updatecliente" method="post">
+            <form role="form" data-dpmaxz-eid="0" action="../php/prodottoDB.php" name="updateprodotto" method="post">
 
                 <div class="form-group">
 
                     <input type="text" class="from-control" name="idrecord" id="idrecord" hidden data-dpmaxz-eid="1">
                     <label class="control-label">Nome *</label>
-                    <input type="text" class="form-control" name="nome" placeholder="Nominativo del cliente" data-dpmaxz-eid="2" id="nome" required>
-                    <label class="control-label">Riferimento</label>
-                    <input type="text" class="form-control" name="riferimento" placeholder="Persona di riferimento" id="riferimento" data-dpmaxz-eid="3">
-                    <label class="control-label">Tipo</label>
-                    <select class="form-control" name="tipo" data-dpmaxz-eid="4" id="tipo" required="">
-                      <option value="CLIENTE">CLIENTE</option>
-                      <option value="PROSPECT">PROSPECT</option>
+                    <input type="text" class="form-control" name="nome" placeholder="Nominativo del prodotto" data-dpmaxz-eid="2" id="nome" required>
+                    <label class="control-label">Marca</label>
+                    <input type="text" class="form-control" name="marca" placeholder="marca" id="marca" data-dpmaxz-eid="3">
+                    <label class="control-label">Categoria</label>
+                    <select class="form-control" name="categoria" data-dpmaxz-eid="4" id="categoria" required="">
+                      <option value="DISERBANTE">DISERBANTE</option>
+                      <option value="CONCIME">CONCIME</option>
                     </select>
                 </div>
-                <button type="submit" class="btn btn-default btn-success pull-right" data-dpmaxz-eid="5" name="updatecliente">Aggiorna</button>
-                    <button type="submit" class="btn pull-left btn-danger"  data-dpmaxz-eid="6" name="deletecliente"><i class="fa fa-trash-o"></i> ELIMINA</button>
+                <button type="submit" class="btn btn-default btn-success pull-right" data-dpmaxz-eid="5" name="updateprodotto">Aggiorna</button>
+                    <button type="submit" class="btn pull-left btn-danger"  data-dpmaxz-eid="6" name="deleteprodotto"><i class="fa fa-trash-o"></i> ELIMINA</button>
             </form>
         </div>
     </div>
@@ -385,8 +385,8 @@ $rs_result = selectreq("clienti");
   var button = $(event.relatedTarget) // Button that triggered the modal
   var id = button.data('idrecord') // Extract info from data-* attributes
   var nome = button.data('nome')
-  var riferimento = button.data('riferimento')
-    var tipo = button.data('tipo')
+  var marca = button.data('marca')
+    var categoria = button.data('categoria')
   // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
   // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
   var modal = $(this)
@@ -394,8 +394,8 @@ $rs_result = selectreq("clienti");
 //  modal.find('.modal-body input').val(recipient)
   modal.find('input[name="idrecord"]').val(id)
   modal.find('input[name="nome"]').val(nome)
-  modal.find('input[name="riferimento"]').val(riferimento)
-  modal.find('select[name="tipo"]').val(tipo)
+  modal.find('input[name="marca"]').val(marca)
+  modal.find('select[name="categoria"]').val(categoria)
 })
 
 
