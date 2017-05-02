@@ -120,6 +120,19 @@
             <!-- /.navbar-static-side  -->
         </nav>
 
+<!-------------->
+        <?php
+
+
+include('../php/selectDB.php');
+
+$rs_result = selectreq("V_ROW_TOT");
+  while($row = $rs_result->fetch_assoc())
+  {
+?>
+
+
+
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
@@ -137,7 +150,7 @@
                                     <i class="fa fa-leaf fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">26</div>
+                                    <div class="huge"><? echo $row["interventi"]; ?></div>
                                     <div>Interventi</div>
                                 </div>
                             </div>
@@ -225,6 +238,10 @@
 
     </div>
     <!-- /#wrapper -->
+
+    <?php
+  };
+  ?>
 
     <!-- jQuery -->
     <script src="../vendor/jquery/jquery.min.js"></script>
