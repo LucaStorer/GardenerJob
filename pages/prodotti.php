@@ -281,7 +281,7 @@ $rs_result = selectreq("prodotti");
                 <label class="control-label">prezzo €</label>
 <div class="input-group">
     <span class="input-group-addon">€</span>
-                <input type="text" class="form-control" name="prezzo" placeholder="Euro" data-dpmaxz-eid="2" value="0.0">
+                <input type=number step=0.01 class="form-control" name="prezzo" placeholder="Euro" data-dpmaxz-eid="2" value="0.0">
                 </div>
   </div>
   <div class="col-lg-6">
@@ -360,7 +360,7 @@ $rs_result = selectreq("prodotti");
                     <label class="control-label">prezzo €</label>
                     <div class="input-group">
                         <span class="input-group-addon">€</span>
-                    <input type="text" class="form-control" name="prezzo" id="prezzo" placeholder="Euro" data-dpmaxz-eid="6">
+                    <input type=number step=0.01 class="form-control" name="prezzo" id="prezzo" placeholder="Euro" data-dpmaxz-eid="6">
                   </div>
   </div>
   <div class="col-lg-6">
