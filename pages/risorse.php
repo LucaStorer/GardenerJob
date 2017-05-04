@@ -93,7 +93,7 @@
                             <a href="index.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href="risorse.php"><i class="fa fa-group fa-fw"></i> Clienti</a>
+                            <a href="clienti.php"><i class="fa fa-group fa-fw"></i> Clienti</a>
                         </li>
                         <li>
                             <a href="risorse.php"><i class="fa fa-pied-piper fa-fw"></i> Risorse</a>
@@ -243,8 +243,8 @@ $rs_result = selectreq("risorse");
 
                 <label class="control-label">Tipo</label>
                 <select class="form-control" name="tipo" data-dpmaxz-eid="4" required="">
-                  <option value="CLIENTE">CLIENTE</option>
-                  <option value="PROSPECT">PROSPECT</option>
+                  <option value="DIPENDENTE">DIPENDENTE</option>
+                  <option value="ESTERNO">ESTERNO</option>
                 </select>
             </div>
             <button type="submit" class="btn btn-default btn-success btn-block" data-dpmaxz-eid="5" name="insertrisorsa">Salva</button>
@@ -298,8 +298,8 @@ $rs_result = selectreq("risorse");
                     <input type="text" class="form-control" name="nome" placeholder="Nominativo della risorsa" data-dpmaxz-eid="2" id="nome" required>
                     <label class="control-label">Tipo</label>
                     <select class="form-control" name="tipo" data-dpmaxz-eid="4" id="tipo" required="">
-                      <option value="CLIENTE">CLIENTE</option>
-                      <option value="PROSPECT">PROSPECT</option>
+                      <option value="DIPENDENTE">DIPENDENTE</option>
+                      <option value="ESTERNO">ESTERNO</option>
                     </select>
                 </div>
                 <button type="submit" class="btn btn-default btn-success pull-right" data-dpmaxz-eid="5" name="updaterisorsa">Aggiorna</button>

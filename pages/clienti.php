@@ -396,7 +396,7 @@ $rs_result = selectreq("clienti");
   modal.find('input[name="nome"]').val(nome)
   modal.find('input[name="riferimento"]').val(riferimento)
   modal.find('select[name="tipo"]').val(tipo)
-})
+});
 
 
     </script>

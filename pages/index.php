@@ -109,6 +109,10 @@
                         <li>
                             <a href="interventi.php"><i class="fa fa-leaf fa-fw"></i> Interventi</a>
                         </li>
+  <li class="divider"></li>
+                        <li>
+                            <a href="cestino.php"><i class="fa fa-trash-o fa-fw"></i> cestino</a>
+                        </li>
 
                         <li>
                             <a href="../pages_original/tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
@@ -257,6 +261,8 @@ $rs_result = selectreq("V_ROW_TOT");
     <!--<script src="../vendor/raphael/raphael.min.js"></script>
     <script src="../vendor/morrisjs/morris.min.js"></script>
     <script src="../data/morris-data.js"></script>-->
+
+
 
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
