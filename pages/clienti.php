@@ -189,11 +189,11 @@ $rs_result = selectreq("clienti");
                                         </a>
                                         </td>
                                         <td>
-                                          <strong>
+
                                             <div class="fontColor">
-                                                <?  echo $row["NOME"]; ?>
-                                            </div>
-                                            </strong>
+                                                <strong><?  echo $row["NOME"]; ?></strong>
+                                               </div>
+
                                         </td>
                                         <td>
                                               <?  echo $row["RIFERIMENTO"]; ?>

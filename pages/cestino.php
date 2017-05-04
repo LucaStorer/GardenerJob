@@ -7,11 +7,11 @@
         <div class="col-lg-12">
 
             <h1 class="page-header"><i class="fa fa-trash-o fa-1x"></i> Cestino
-             <button type="button" class="btn pull-right btn-danger" onclick="location.href='../php/emptydeleteDB.php';"><i class="fa fa-trash-o"></i> Svuota Cestino
+             <button type="button" class="btn pull-right btn-danger" onclick="emptyfunc()"  name="empty"><i class="fa fa-trash-o"></i> Svuota Cestino
               </button></h1>
 
             <!--  <button type="button" class="btn pull-right btn-success" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus-circle"></i> Nuovo</button> -->
-</h1>
+
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -59,11 +59,13 @@ $rs_result = selectDelete("clienti");
                         <tr>
 
                             <td>
-                              <strong>
+
                                 <div class="fontColor">
-                                    <?  echo $row["NOME"]; ?>
+                                    <strong>
+                                        <?  echo $row["NOME"]; ?>
+                                    </strong>
                                 </div>
-                                </strong>
+
                             </td>
                             <td>
                                   <?  echo $row["RIFERIMENTO"]; ?>
@@ -122,11 +124,13 @@ $rs_result = selectDelete("risorse");
             <tr>
 
                 <td>
-                  <strong>
+
                     <div class="fontColor">
-                        <?  echo $row["NOME"]; ?>
+                        <strong>
+                            <?  echo $row["NOME"]; ?>
+                        </strong>
                     </div>
-                    </strong>
+
                 </td>
                 <td>
                       <?  echo $row["TIPO"]; ?>
@@ -190,13 +194,15 @@ $rs_result = selectDelete("prodotti");
                                     while($row = $rs_result->fetch_assoc()) {
                                     ?>
                                     <tr>
-                                        
+
                                         <td>
-                                          <strong>
+
                                             <div class="fontColor">
-                                                <?  echo $row["NOME"]; ?>
+                                                <strong>
+                                                    <?  echo $row["NOME"]; ?>
+                                                </strong>
                                             </div>
-                                            </strong>
+
                                         </td>
                                         <td>
                                               <?  echo $row["MARCA"]; ?>
@@ -230,8 +236,42 @@ $rs_result = selectDelete("prodotti");
 </div>
 <!-- /#page-wrapper -->
 
-<script>
+<script type = "text/javascript">
+
+function emptyfunc() {
+
+  var agree=confirm("ATTENZIONE! Sicuro di voler cancellare il Record? NON SARANNO RECUPERABILI!");
+    if (agree)
+        {
+
+  $.ajax({
+    type: "POST",
+                url: "../php/emptydeleteDB.php",
+                data: "tablename=clienti&"+"id=1",
+
+    success: function(msg){
+           alert( msg );
+            location.reload(true);
+  // body.append(data);
+},
+       error: function ( xhr ) {
+         alert( msg );
+       }
+
+
+  });
+
+}  else
+       {
+       return false ;
+       }
+
+  };
+
 $(document).ready(function() {
+
+
+
     $('#dtclienti').DataTable({
         responsive: true
     });
@@ -245,6 +285,7 @@ $(document).ready(function() {
         responsive: true
     });
 });
+
 
 
 </script>
