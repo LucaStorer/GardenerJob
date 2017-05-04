@@ -232,9 +232,79 @@ $rs_result = selectDelete("prodotti");
             </div>
 
 <!------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<?php
+
+$rs_result = selectDelete("V_INTERVENTI");
+?>
+
+<!-- /.row -->
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+              Interventi
+            </div>
+
+            <!-- /.panel-heading dataTables-example-->
+            <div class="panel-body">
+                <table width="100%" class="table table-striped table-bordered table-hover" id="dtinterventi" >
+
+                    <thead>
+                        <tr>
+                          <th>
+                              <strong>DATA</strong>
+                          </th>
+                          <th>
+                              <strong>Cliente</strong>
+                          </th>
+                          <th>
+                            riferimento
+                          </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <?php
+                        while($row = $rs_result->fetch_assoc()) {
+                        ?>
+                        <tr>
+
+                            <td>
+
+                                <div class="fontColor">
+                                    <strong>
+                                        <?  echo $row["DATA"]; ?>
+                                    </strong>
+                                </div>
+
+                            </td>
+                            <td>  <strong>
+                                <?  echo $row["CLIENTE"]; ?>
+                                  </strong>
+                            </td>
+                            <td>
+                                  <?  echo $row["RIFERIMENTO"]; ?>
+                            </td>
+
+                        </tr>
+                        <?php
+};
+                        ?>
+                    </tbody>
+                </table>
+              </div>
+        </div>
+    </div>
+</div>
+
 
 </div>
 <!-- /#page-wrapper -->
+
+
+<?php
+include('footer.php');
+ ?>
 
 <script type = "text/javascript">
 
@@ -281,7 +351,7 @@ $(document).ready(function() {
     $('#dtprodotti').DataTable({
         responsive: true
     });
-    $('#dtinteventi').DataTable({
+    $('#dtinterventi').DataTable({
         responsive: true
     });
 });
@@ -289,3 +359,5 @@ $(document).ready(function() {
 
 
 </script>
+</body>
+</html>
