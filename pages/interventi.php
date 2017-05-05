@@ -39,14 +39,17 @@ $rs_result = selectreq("V_INTERVENTI");
 
                     <thead>
                         <tr>
+                          <th style="width:60px">
+
+                          </th>
                           <th>
-                              <strong>DATA</strong>
+                              <strong>Data</strong>
+                          </th>
+                          <th>
+                              <strong>Codice</strong>
                           </th>
                           <th>
                               <strong>Cliente</strong>
-                          </th>
-                          <th>
-                            riferimento
                           </th>
                         </tr>
                     </thead>
@@ -57,6 +60,9 @@ $rs_result = selectreq("V_INTERVENTI");
                         ?>
                         <tr>
 
+<td>
+   <button type="button" class="btn pull-default btn-info" onclick="" ><i class="fa  fa-plus-circle"></i> Dettagli</button>
+</td>
                             <td>
 
                                 <div class="fontColor">
@@ -67,11 +73,11 @@ $rs_result = selectreq("V_INTERVENTI");
 
                             </td>
                             <td>  <strong>
-                                <?  echo $row["CLIENTE"]; ?>
+                                <?  echo $row["CODICE"]; ?>
                                   </strong>
                             </td>
                             <td>
-                                  <?  echo $row["RIFERIMENTO"]; ?>
+                                  <?  echo $row["CLIENTE"]; ?>
                             </td>
 
                         </tr>
@@ -132,7 +138,8 @@ $(document).ready(function() {
 
     $('#dtinterventi').DataTable({
       //ordina i risultati
-      "order": [[0, "asc"]],
+      "order": [[1, "asc"]],
+         autoFill: true,
       //abilita il response della tabella
       responsive: true
     });

@@ -87,10 +87,6 @@ $rs_result = selectDelete("clienti");
 <!------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
 <?php
-
-
-//include('../php/selectDB.php');
-
 $rs_result = selectDelete("risorse");
 ?>
 
@@ -122,15 +118,12 @@ $rs_result = selectDelete("risorse");
             while($row = $rs_result->fetch_assoc()) {
             ?>
             <tr>
-
                 <td>
-
                     <div class="fontColor">
                         <strong>
                             <?  echo $row["NOME"]; ?>
                         </strong>
                     </div>
-
                 </td>
                 <td>
                       <?  echo $row["TIPO"]; ?>
