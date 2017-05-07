@@ -228,22 +228,9 @@
 
 
 
-              $('#dtclienti').DataTable({
 
-                  //ordina i risultati
-                  "order": [[1, "asc"]],
-                  //abilita il response della tabella
-                  responsive: true
 
-              });
-
-              //evento che intercetta la selezione della riga
-              var table = $('#dtclienti').DataTable();
-              $('#dtclienti tbody').on('click', 'tr', function () {
-                  var data = table.row(this).data();
-                //  alert('You clicked on ' + data[1] + '\'s row');
-              });
-
+          
 
 
 

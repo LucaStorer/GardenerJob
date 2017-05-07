@@ -142,7 +142,7 @@ $(document).ready(function() {
 
     $('#dtinterventi').DataTable({
       //ordina i risultati
-      "order": [[1, "asc"]],
+      "order": [[1, "desc"]],
          autoFill: true,
       //abilita il response della tabella
       responsive: true
