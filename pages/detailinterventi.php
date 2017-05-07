@@ -7,10 +7,7 @@
         <div class="col-lg-12">
 
             <h1 class="page-header"><i class="fa fa-leaf fa-1x"></i> Interventi
-            <!-- <button type="button" class="btn pull-right btn-primary" onclick="" ><i class="fa  fa-plus-circle"></i> Nuovo</button> -->
-
-  <button type="button" class="btn pull-right btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus-circle"></i> Nuovo</button>
-
+             <button type="button" class="btn pull-right btn-primary" onclick="" ><i class="fa  fa-plus-circle"></i> Nuovo</button>
             </h1>
 
             <!--  <button type="button" class="btn pull-right btn-success" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus-circle"></i> Nuovo</button> -->
@@ -23,9 +20,13 @@
 
 <?php
 
+
+
 include('../php/selectDB.php');
 
-$rs_result = selectreq("V_INTERVENTI");
+ $id = $_GET['recordid'];
+
+$rs_result = selectreqID("V_INTERVENTI",$id);
 ?>
 
 <!-- /.row -->
@@ -63,9 +64,9 @@ $rs_result = selectreq("V_INTERVENTI");
                         ?>
                         <tr>
 
-                          <td>
-                            <button type="button" class="btn pull-default btn-info" onclick="location.href='detailinterventi.php?recordid=<?echo $row["ID"]; ?>';"><i class="fa  fa-plus-circle"></i> Dettagli</button>
-                          </td>
+<td>
+   <button type="button" class="btn pull-default btn-info" onclick="" ><i class="fa  fa-plus-circle"></i> Dettagli</button>
+</td>
                             <td>
 
                                 <div class="fontColor">
@@ -101,14 +102,13 @@ $rs_result = selectreq("V_INTERVENTI");
 <!-- /#page-wrapper -->
 
 <?php
-include('modalinterventi.php');
 include('footer.php');
  ?>
 
 
 <script type = "text/javascript">
 
-function detailIntervento(recordid) {
+function emptyfunc() {
 
   var agree=confirm("ATTENZIONE! Sicuro di voler cancellare il Record? NON SARANNO RECUPERABILI!");
     if (agree)
@@ -117,7 +117,7 @@ function detailIntervento(recordid) {
   $.ajax({
     type: "POST",
                 url: "../php/emptydeleteDB.php",
-                data: "recordid=clienti&"+"id=1",
+                data: "tablename=clienti&"+"id=1",
 
     success: function(msg){
            alert( msg );
