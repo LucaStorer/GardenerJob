@@ -45,6 +45,10 @@ $rs_result = selectreq("V_INTERVENTI");
                           <th style="width:60px">
 
                           </th>
+                          <th style="width:20px">
+
+                          </th>
+
                           <th>
                               <strong>Data</strong>
                           </th>
@@ -65,6 +69,20 @@ $rs_result = selectreq("V_INTERVENTI");
 
                           <td>
                             <button type="button" class="btn pull-default btn-info" onclick="location.href='detailinterventi.php?recordid=<?echo $row["ID"]; ?>';"><i class="fa  fa-plus-circle"></i> Dettagli</button>
+</td>
+<td>
+                            <a href="#" data-toggle="modal"
+                            data-target="#exampleModal"
+                            data-idrecord="<? echo $row["ID"]; ?>"
+                            data-date="<? echo $row["DATA"]; ?>"
+                            data-codice="<? echo $row["CODICE"]; ?>"
+                            data-idcliente="<? echo $row["ID_CLIENTE"]; ?>"
+                            data-cliente="<? echo $row["CLIENTE"]; ?>">
+                              <p class="text-center">
+                              <i class="fa fa-edit fa-fw"></i>
+                          </p>
+                          </a>
+
                           </td>
                             <td>
 
@@ -105,53 +123,85 @@ include('modalinterventi.php');
 include('footer.php');
  ?>
 
+ <script>
+     $(document).ready(function () {
 
-<script type = "text/javascript">
+       $('#dtinterventi').DataTable({
+         //ordina i risultati
+         "order": [[1, "desc"]],
+            autoFill: true,
+         //abilita il response della tabella
+         responsive: true
+       });
 
-function detailIntervento(recordid) {
+         $('[data-toggle="tooltip"]').tooltip();
 
-  var agree=confirm("ATTENZIONE! Sicuro di voler cancellare il Record? NON SARANNO RECUPERABILI!");
-    if (agree)
-        {
 
-  $.ajax({
-    type: "POST",
-                url: "../php/emptydeleteDB.php",
-                data: "recordid=clienti&"+"id=1",
 
-    success: function(msg){
-           alert( msg );
-            location.reload(true);
-  // body.append(data);
+
+});
+
+
+$('input[name="date"]').daterangepicker({
+locale: {
+//format: 'DD-MM-YYYY'
+format: 'YYYY-MM-DD'
 },
-       error: function ( xhr ) {
-         alert( msg );
-       }
 
 
-  });
+singleDatePicker: true
+//showDropdowns: true
+//},
+//function(start, end, label) {
+//      var years = moment().diff(start, 'years');
+//      alert("You are " + years + " years old.");
+});
 
-}  else
-       {
-       return false ;
-       }
+$('input[name="date"]').on('show.daterangepicker', function(ev, picker) {
+  console.log($(this).val());
 
-  };
+$('input[name="date"]').data('daterangepicker').updateCalendars;
 
-$(document).ready(function() {
 
-    $('#dtinterventi').DataTable({
-      //ordina i risultati
-      "order": [[1, "desc"]],
-         autoFill: true,
-      //abilita il response della tabella
-      responsive: true
-    });
+//piker.startDate.setStartDate('2014-01-02');
+ console.log(picker.startDate.format('YYYY-MM-DD'));
+
+
+});
+
+//evento che intercetta la finestra modale in modifica per passare i parametri
+$('#exampleModal').on('show.bs.modal', function (event) {
+
+
+
+var button = $(event.relatedTarget) // Button that triggered the modal
+var id = button.data('idrecord') // Extract info from data-* attributes
+var date = button.data('date')
+var codice = button.data('codice')
+var idcliente = button.data('idcliente')
+ var cliente = button.data('cliente')
+// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+var modal = $(this)
+
+//  modal.find('.modal-title').text('New message to ' + recipient)
+//  modal.find('.modal-body input').val(recipient)
+
+modal.find('input[name="idrecord"]').val(id)
+modal.find('input[name="date"]').val(date)
+modal.find('input[name="codice"]').val(codice)
+modal.find('select[name="idcliente"]').val(idcliente)
+
 });
 
 
 
-</script>
+
+
+ </script>
+
+
+
 
 </body>
 </html>

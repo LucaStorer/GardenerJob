@@ -65,13 +65,13 @@ if(isset($_POST['insertintervento']))
 //-------------------------------------------------------------------------------------
 
  // data insert code starts here.
-if(isset($_POST['updatecliente']))
+if(isset($_POST['updateintervento']))
 {
 
         $idrecord =  $_POST['idrecord'];
-       $nome = $_POST['nome'];
-        $riferimento = $_POST['riferimento'];
-        $tipo = $_POST['tipo'];
+        $data = $_POST['date'];
+         $codice = $_POST['codice'];
+         $idcliente = $_POST['idcliente'];
 
        // Create connection
        $conn = mysqli_connect($servername, $username, $password, $dbname);
@@ -80,23 +80,23 @@ if(isset($_POST['updatecliente']))
            die("Connection failed: " . mysqli_connect_error());
        }
 
-       $sql = "UPDATE clienti SET NOME='$nome', RIFERIMENTO='$riferimento', TIPO_CLIENTE='$tipo' WHERE ID = $idrecord";
+       $sql = "UPDATE interventi SET DATA='$data', CODICE='$codice', ID_CLIENTE='$idcliente' WHERE ID = $idrecord";
 
        if (mysqli_query($conn, $sql)) {
           // echo "New record created successfully";
 
           ?>
  <script>
- alert('Cliente modificato con Successo');
-        window.location='../pages/clienti.php'
+ alert('Intervento modificato con Successo');
+        window.location='../pages/interventi.php'
        </script>
  <?php
        } else {
         ?>
   <script>
-  alert('Errore modifica Cliente');
+  alert('Errore modifica Intervento');
   alert('<? echo "Error: " . $sql . "<br>" . mysqli_error($conn); ?>');
-        window.location='../pages/clienti.php'
+        window.location='../pages/interventi.php'
         </script>
   <?php
    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
@@ -117,7 +117,7 @@ if(isset($_POST['updatecliente']))
 //-------------------------------------------------------------------------------------
 
      // data insert code starts here.
-    if(isset($_POST['deletecliente']))
+    if(isset($_POST['deleteintervento']))
     {
 
     $idrecord =  $_POST['idrecord'];
@@ -131,7 +131,7 @@ if(isset($_POST['updatecliente']))
            }
 
         //   $sql = "DELETE FROM $tablename WHERE ID_CLIENTE = $id";
-       $sql = "UPDATE clienti SET `DELETE` = 1 WHERE ID = $idrecord";
+       $sql = "UPDATE interventi SET `DELETE` = 1 WHERE ID = $idrecord";
 
 
 
@@ -140,8 +140,8 @@ if(isset($_POST['updatecliente']))
 
               ?>
      <script>
-     alert('Cliente eliminato');
-            window.location='../pages/clienti.php'
+     alert('Intervento eliminato');
+            window.location='../pages/interventi.php'
            </script>
      <?php
            } else {
@@ -149,7 +149,7 @@ if(isset($_POST['updatecliente']))
       <script>
       alert('Errore eliminazione');
       alert('<? echo "Error: " . $sql . "<br>" . mysqli_error($conn); ?>');
-            window.location='../pages/clienti.php'
+            window.location='../pages/interventi.php'
             </script>
       <?php
        echo "Error: " . $sql . "<br>" . mysqli_error($conn);

@@ -382,6 +382,7 @@ $rs_result = selectreq("clienti");
 
 //evento che intercetta la finestra modale in modifica per passare i parametri
         $('#exampleModal').on('show.bs.modal', function (event) {
+
   var button = $(event.relatedTarget) // Button that triggered the modal
   var id = button.data('idrecord') // Extract info from data-* attributes
   var nome = button.data('nome')
@@ -396,6 +397,7 @@ $rs_result = selectreq("clienti");
   modal.find('input[name="nome"]').val(nome)
   modal.find('input[name="riferimento"]').val(riferimento)
   modal.find('select[name="tipo"]').val(tipo)
+
 });
 
 
