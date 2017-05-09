@@ -17,7 +17,7 @@ footer.navbar-default.navbar-fixed-bottom
  {
       margin:0;
  }
-<style>
+</style>
 
 <!-- /#wrapper -->
 <!-- jQuery -->

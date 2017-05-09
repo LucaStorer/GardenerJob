@@ -15,14 +15,14 @@
 
   <!--------------------------------- FORM NUOVO INTERVENTO ---------------->
 
-  <div class="panel panel-primary">
+  <div class="panel panel-info">
       <div class="panel-heading">
-          Nuovo Cliente
+          Nuovo Attivita
       </div>
 
       <!-- /.panel-heading dataTables-example-->
       <div class="panel-body">
-          <form role="form" data-dpmaxz-eid="1" action="../php/interventoDB.php" name="insertintervento" method="post">
+          <form role="form" data-dpmaxz-eid="1" action="../php/attivitaDB.php" name="insertattivita" method="post">
 
               <div class="form-group">
 
@@ -59,7 +59,7 @@
                   </select>
               </div>
 
-              <button type="submit" class="btn btn-default btn-primary btn-block" data-dpmaxz-eid="5" name="insertintervento">Salva</button>
+              <button type="submit" class="btn btn-default btn-info btn-block" data-dpmaxz-eid="5" name="insertattivita">Salva</button>
           </form>
       </div>
   </div>
@@ -91,14 +91,14 @@
 
       <!--------------------------------- FORM MODIFICA INTERVENTO ---------------->
 
-      <div class="panel panel-primary">
+      <div class="panel panel-info">
           <div class="panel-heading">
-              Modifica Intervento
+              Modifica attivita
           </div>
 
           <!-- /.panel-heading dataTables-example-->
           <div class="panel-body">
-              <form role="form" data-dpmaxz-eid="0" action="../php/interventoDB.php" name="updateintervento" method="post">
+              <form role="form" data-dpmaxz-eid="0" action="../php/attivitaDB.php" name="updateattivita" method="post">
 
   <input type="text" class="from-control" name="idrecord" id="idrecord" hidden data-dpmaxz-eid="1">
 
@@ -134,8 +134,8 @@
                                </select>
                            </div>
 
-                  <button type="submit" class="btn btn-default btn-primary pull-right" data-dpmaxz-eid="5" name="updateintervento">Aggiorna</button>
-                      <button type="submit" class="btn pull-left btn-danger"  data-dpmaxz-eid="6" name="deleteintervento"><i class="fa fa-trash-o"></i> ELIMINA</button>
+                  <button type="submit" class="btn btn-default btn-info pull-right" data-dpmaxz-eid="5" name="updateattivita">Aggiorna</button>
+                      <button type="submit" class="btn pull-left btn-danger"  data-dpmaxz-eid="6" name="deleteattivita"><i class="fa fa-trash-o"></i> ELIMINA</button>
               </form>
           </div>
       </div>

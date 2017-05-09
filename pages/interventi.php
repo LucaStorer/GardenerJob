@@ -5,16 +5,9 @@
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
-
             <h1 class="page-header"><i class="fa fa-leaf fa-1x"></i> Interventi
-            <!-- <button type="button" class="btn pull-right btn-primary" onclick="" ><i class="fa  fa-plus-circle"></i> Nuovo</button> -->
-
-  <button type="button" class="btn pull-right btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus-circle"></i> Nuovo</button>
-
+              <button type="button" class="btn pull-right btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus-circle"></i> Nuovo</button>
             </h1>
-
-            <!--  <button type="button" class="btn pull-right btn-success" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus-circle"></i> Nuovo</button> -->
-
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -43,12 +36,10 @@ $rs_result = selectreq("V_INTERVENTI");
                     <thead>
                         <tr>
                           <th style="width:60px">
-
                           </th>
                           <th style="width:20px">
 
                           </th>
-
                           <th>
                               <strong>Data</strong>
                           </th>
@@ -67,7 +58,7 @@ $rs_result = selectreq("V_INTERVENTI");
                         ?>
                         <tr>
                           <td>
-                            <button type="button" class="btn pull-default btn-info" onclick="location.href='detailinterventi.php?recordid=<?echo $row["ID"]; ?>';"><i class="fa  fa-plus-circle"></i> Dettagli</button>
+                            <button type="button" class="btn pull-default btn-info btn-xs" onclick="location.href='detailinterventi.php?recordid=<?echo $row["ID"]; ?>';"><i class="fa fa-list-alt"></i> Dettagli</button>
 </td>
 <td>
                             <a href="#" data-toggle="modal"
@@ -81,16 +72,13 @@ $rs_result = selectreq("V_INTERVENTI");
                               <i class="fa fa-edit fa-fw"></i>
                           </p>
                           </a>
-
                           </td>
                             <td>
-
                                 <div class="fontColor">
                                     <strong>
                                         <?  echo $row["DATA"]; ?>
                                     </strong>
                                 </div>
-
                             </td>
                             <td>  <strong>
                                 <?  echo $row["CODICE"]; ?>
@@ -99,7 +87,6 @@ $rs_result = selectreq("V_INTERVENTI");
                             <td>
                                   <?  echo $row["CLIENTE"]; ?>
                             </td>
-
                         </tr>
                         <?php
 };
@@ -128,18 +115,14 @@ include('footer.php');
        $('#dtinterventi').DataTable({
          //ordina i risultati
          "order": [[2, "desc"]],
-            autoFill: true,
+        
          //abilita il response della tabella
          responsive: true
        });
 
          $('[data-toggle="tooltip"]').tooltip();
 
-
-
-
 });
-
 
 $('input[name="date"]').daterangepicker({
 locale: {
@@ -147,9 +130,8 @@ locale: {
 format: 'YYYY-MM-DD'
 },
 
-
-singleDatePicker: true
-//showDropdowns: true
+singleDatePicker: true,
+showDropdowns: true
 //},
 //function(start, end, label) {
 //      var years = moment().diff(start, 'years');
@@ -161,17 +143,12 @@ $('input[name="date"]').on('show.daterangepicker', function(ev, picker) {
 
 $('input[name="date"]').data('daterangepicker').updateCalendars;
 
-
-//piker.startDate.setStartDate('2014-01-02');
  console.log(picker.startDate.format('YYYY-MM-DD'));
-
 
 });
 
 //evento che intercetta la finestra modale in modifica per passare i parametri
 $('#exampleModal').on('show.bs.modal', function (event) {
-
-
 
 var button = $(event.relatedTarget) // Button that triggered the modal
 var id = button.data('idrecord') // Extract info from data-* attributes
@@ -193,14 +170,7 @@ modal.find('select[name="idcliente"]').val(idcliente)
 
 });
 
-
-
-
-
  </script>
-
-
-
 
 </body>
 </html>
