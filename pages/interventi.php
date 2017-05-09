@@ -66,7 +66,6 @@ $rs_result = selectreq("V_INTERVENTI");
                         while($row = $rs_result->fetch_assoc()) {
                         ?>
                         <tr>
-
                           <td>
                             <button type="button" class="btn pull-default btn-info" onclick="location.href='detailinterventi.php?recordid=<?echo $row["ID"]; ?>';"><i class="fa  fa-plus-circle"></i> Dettagli</button>
 </td>
@@ -128,7 +127,7 @@ include('footer.php');
 
        $('#dtinterventi').DataTable({
          //ordina i risultati
-         "order": [[1, "desc"]],
+         "order": [[2, "desc"]],
             autoFill: true,
          //abilita il response della tabella
          responsive: true

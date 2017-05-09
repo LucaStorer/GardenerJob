@@ -69,8 +69,8 @@
                 Gardener Job
                 </a>-->
 
-                <a class="navbar-brand" href="index.php">
-                    <img alt="Brand" src="../media/brend.png" height="30">
+          <a class="navbar-brand" href="index.php">
+            <p>        <img alt="Brand" src="../media/icon.png" height="30"> Gardener Job </p>
                 </a>
             </div>
             <!-- /.navbar-header -->

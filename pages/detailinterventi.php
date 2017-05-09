@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-lg-12">
 
-            <h1 class="page-header"><i class="fa fa-leaf fa-1x"></i> Interventi
+            <h1 class="page-header"><i class="fa fa-leaf fa-1x"></i> Interventi <small> \ Dettaglio </small>
              <button type="button" class="btn pull-right btn-primary" onclick="" ><i class="fa  fa-plus-circle"></i> Nuovo</button>
             </h1>
 
