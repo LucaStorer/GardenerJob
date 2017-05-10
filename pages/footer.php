@@ -8,15 +8,15 @@
 <style>
 
 footer.navbar-default.navbar-fixed-bottom
- {
-      background:grey;
-      color:white;
-      padding:1em 0;
- }
- footer.navbar-default.navbar-fixed-bottom p
- {
-      margin:0;
- }
+{
+  background:grey;
+  color:white;
+  padding:1em 0;
+}
+footer.navbar-default.navbar-fixed-bottom p
+{
+  margin:0;
+}
 </style>
 
 <!-- /#wrapper -->
