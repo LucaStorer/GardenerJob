@@ -3,8 +3,6 @@
 
 <head>
 
-
-
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -136,8 +134,6 @@
 
     ?>
 
-
-
     <div id="page-wrapper">
       <div class="row">
         <div class="col-lg-12">
@@ -261,8 +257,6 @@
 <!--<script src="../vendor/raphael/raphael.min.js"></script>
 <script src="../vendor/morrisjs/morris.min.js"></script>
 <script src="../data/morris-data.js"></script>-->
-
-
 
 <!-- Custom Theme JavaScript -->
 <script src="../dist/js/sb-admin-2.js"></script>

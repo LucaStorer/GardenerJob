@@ -24,7 +24,7 @@
           <div class="panel-body">
             <form role="form" data-dpmaxz-eid="1" action="../php/attivitaDB.php" name="insertattivita" method="post">
 
-              <input type="text" class="from-control" name="idint" id="idint"  data-dpmaxz-eid="1" value="<?echo $IDINT; ?>">
+              <input type="text" class="from-control" name="idint" id="idint" hidden data-dpmaxz-eid="1" value="<?echo $IDINT; ?>">
 
               <div class="form-group">
                 <label class="control-label">Titolo *</label>
@@ -96,8 +96,8 @@
 
             <form role="form" data-dpmaxz-eid="0" action="../php/attivitaDB.php" name="updateattivita" method="post">
 
-              <input type="text" class="from-control" name="idint" id="idint"  data-dpmaxz-eid="1" value="<?echo $IDINT; ?>">
-              <input type="text" class="from-control" name="idrecord" id="idrecord"  data-dpmaxz-eid="1">
+              <input type="text" class="from-control" name="idint" id="idint" hidden data-dpmaxz-eid="1" value="<?echo $IDINT; ?>">
+              <input type="text" class="from-control" name="idrecord" id="idrecord" hidden data-dpmaxz-eid="1">
 
               <div class="form-group">
                 <label class="control-label">Titolo *</label>
