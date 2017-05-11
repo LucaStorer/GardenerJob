@@ -40,6 +40,9 @@ include('master.php');
               <thead>
                 <tr>
                   <th>
+                    ID
+                  </th>
+                  <th>
                     <strong>Cliente</strong>
                   </th>
 
@@ -58,6 +61,9 @@ include('master.php');
                   ?>
                   <tr>
 
+<td>
+    <?  echo $row["ID"]; ?>
+</td>
                     <td>
 
                       <div class="fontColor">
@@ -105,6 +111,9 @@ include('master.php');
               <thead>
                 <tr>
                   <th>
+                    ID
+                  </th>
+                  <th>
                     <strong>nome</strong>
                   </th>
                   <th>
@@ -118,6 +127,9 @@ include('master.php');
                 while($row = $rs_result->fetch_assoc()) {
                   ?>
                   <tr>
+                    <td>
+                        <?  echo $row["ID"]; ?>
+                    </td>
                     <td>
                       <div class="fontColor">
                         <strong>
@@ -161,6 +173,9 @@ include('master.php');
               <thead>
                 <tr>
                   <th>
+                    ID
+                  </th>
+                  <th>
                     <strong>Prodotto</strong>
                   </th>
 
@@ -187,9 +202,10 @@ include('master.php');
                 while($row = $rs_result->fetch_assoc()) {
                   ?>
                   <tr>
-
                     <td>
-
+                        <?  echo $row["ID"]; ?>
+                    </td>
+                    <td>
                       <div class="fontColor">
                         <strong>
                           <?  echo $row["NOME"]; ?>
@@ -245,6 +261,9 @@ include('master.php');
               <thead>
                 <tr>
                   <th>
+                    ID
+                  </th>
+                  <th>
                     <strong>DATA</strong>
                   </th>
                   <th>
@@ -261,9 +280,10 @@ include('master.php');
                 while($row = $rs_result->fetch_assoc()) {
                   ?>
                   <tr>
-
                     <td>
-
+                        <?  echo $row["ID"]; ?>
+                    </td>
+                    <td>
                       <div class="fontColor">
                         <strong>
                           <?  echo $row["DATA"]; ?>
