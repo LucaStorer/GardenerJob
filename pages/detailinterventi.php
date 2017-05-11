@@ -51,7 +51,18 @@ include('master.php');
 
           <?php
           include('attivita.php');
+          //Panel a scomparsa
 
+  $idat = 1;
+
+  //        $idat = $_COOKIE['idattivitasel'];
+
+//if($idat == "")
+//{
+  //$idat = 1;
+//U}
+
+          include('detailprodotti.php');
           ?>
         </div>
       </div>
@@ -118,6 +129,26 @@ $(document).ready(function() {
     autoFill: true,
     //abilita il response della tabella
     responsive: true
+  });
+
+  $('#dtprodotti').DataTable({
+    //ordina i risultati
+    "order": [[2, "asc"]],
+    autoFill: true,
+    //abilita il response della tabella
+    responsive: true
+  });
+
+  //evento che intercetta la selezione della riga
+  var table = $('#dtattivita').DataTable();
+  $('#dtattivita tbody').on('click', 'tr', function () {
+    var data = table.row(this).data();
+     alert('You clicked on ' + data[1].value[3] + '\'s row');
+
+
+//  document.cookie = "idattivitasel="+data[1];
+
+
   });
 
 });
