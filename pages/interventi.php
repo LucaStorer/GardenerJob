@@ -58,7 +58,7 @@ include('master.php');
                 ?>
                 <tr>
                   <td>
-                    <button type="button" class="btn pull-default btn-info btn-xs" onclick="location.href='detailinterventi.php?recordid=<?echo $row["ID"]; ?>';"><i class="fa fa-list-alt"></i> Dettagli</button>
+                    <button type="button" class="btn pull-default btn-info btn-xs" onclick="location.href='detailinterventi.php?recordid=<?echo $row["ID"]; ?>&idatt=0';"><i class="fa fa-list-alt"></i> Dettagli</button>
                   </td>
                   <td>
                     <a href="#" data-toggle="modal"

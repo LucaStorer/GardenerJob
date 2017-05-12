@@ -20,6 +20,9 @@ $rs_resultAT = selectreqID("V_ATTIVITA",$id);
 
               </th>
               <th>
+                ID
+              </th>
+              <th>
                 <strong>Titolo</strong>
               </th>
               <th>
@@ -63,6 +66,9 @@ $rs_resultAT = selectreqID("V_ATTIVITA",$id);
                   </p>
                 </a>
 
+              </td>
+              <td id="ID_ATTIVITA_SEL">
+                <? echo $rowAT["ID_ATTIVITA"]; ?>
               </td>
               <td>
 

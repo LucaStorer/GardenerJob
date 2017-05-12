@@ -18,9 +18,11 @@ include('master.php');
 
   <?php
 
+
   include('../php/selectDB.php');
 
-  $id = $_GET['recordid'];
+    $id = $_GET['recordid'];
+    $idat = $_GET['idatt'];
 
   $rs_result = selectreqID("V_INTERVENTI",$id);
 
@@ -50,20 +52,18 @@ include('master.php');
         <div class="panel-body">
 
           <?php
+
           include('attivita.php');
-          //Panel a scomparsa
 
-  $idat = 1;
+if ($idat == 0){
+    include('emptydetailprodotti.php');
 
-  //        $idat = $_COOKIE['idattivitasel'];
+}else{
+  include('detailprodotti.php');
+}
 
-//if($idat == "")
-//{
-  //$idat = 1;
-//U}
-
-          include('detailprodotti.php');
           ?>
+
         </div>
       </div>
     </div>
@@ -81,6 +81,41 @@ include('footer.php');
 
 
 <script type = "text/javascript">
+
+
+
+function deleterecordAttProd(ID_ATT,ID_PROD) {
+
+  var agree=confirm("ATTENZIONE! Sicuro di voler cancellare il Record? NON SARANNO RECUPERABILI!");
+  if (agree)
+  {
+
+//alert("tablename=attivitaprodotto&"+"idattivita="+ID_ATT+"&idprodotto="+ID_PROD);
+
+console.log("tablename=attivitaprodotto&"+"idattivita="+ID_ATT+"&idprodotto="+ID_PROD);
+    $.ajax({
+      type: "POST",
+      url: "../php/prodottoDB.php",
+      data: "tablename=attivitaprodotto&"+"idattivita="+ID_ATT+"&idprodotto="+ID_PROD,
+
+      success: function(msg){
+        alert( msg );
+        location.reload(true);
+        // body.append(data);
+      },
+      error: function ( xhr ) {
+        alert( xhr );
+      }
+
+
+    });
+
+  }  else
+  {
+    return false ;
+  }
+
+};
 
 function deleterecord(ID_INT,ID_ATT) {
 
@@ -115,6 +150,23 @@ function deleterecord(ID_INT,ID_ATT) {
 
 $(document).ready(function() {
 
+  /*if (<? echo $idat; ?> == 0){
+    var TableProd = document.getElementById("tableProdotti");
+  var selAttivita = document.getElementById("selAttivita");
+
+    TableProd.style.visibility = 'hidden';      // Hide
+  selAttivita.style.visibility = 'visible';
+       // Show
+  }else{
+
+    var TableProd = document.getElementById("tableProdotti");
+  var selAttivita = document.getElementById("selAttivita");
+
+    selAttivita.style.visibility = 'hidden';      // Hide
+  TableProd.style.visibility = 'visible';     // Show
+
+}*/
+
   $('#dtinterventi').DataTable({
     //ordina i risultati
     "order": [[1, "asc"]],
@@ -124,6 +176,7 @@ $(document).ready(function() {
   });
 
   $('#dtattivita').DataTable({
+
     //ordina i risultati
     "order": [[4, "asc"]],
     autoFill: true,
@@ -142,11 +195,22 @@ $(document).ready(function() {
   //evento che intercetta la selezione della riga
   var table = $('#dtattivita').DataTable();
   $('#dtattivita tbody').on('click', 'tr', function () {
-    var data = table.row(this).data();
-     alert('You clicked on ' + data[1].value[3] + '\'s row');
+
+    //var Row = document.getElementById("ID_ATTIVITA_SEL");
+  //  var Cells = Row.getElementsByTagName("td");
+  //  alert(Cells[0].innerText);
+
+  var idattsel = this.cells[2].innerText;
+  //alert(idattsel);
+    var myDiv = document.getElementById("idint");
 
 
+  myDiv.value=idattsel;
+
+//  alert(myDiv.value);
 //  document.cookie = "idattivitasel="+data[1];
+
+    window.location="detailinterventi.php?recordid=<?echo $id; ?>&idatt="+  myDiv.value;
 
 
   });

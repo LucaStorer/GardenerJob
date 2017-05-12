@@ -1,11 +1,11 @@
 <?php
 $rs_resultATPR = selectreqID("V_ATTIVITA_PRODOTTI",$idat);
 ?>
-<div class="row">
+<div class="row"  >
   <div class="col-lg-12">
     <div class="panel panel-warning">
       <div class="panel-heading">
-        Prodotti <button type="button" class="btn pull-right btn-warning btn-xs" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus-circle"></i> Aggiungi</button>
+        Prodotti <button type="button" class="btn pull-right btn-warning btn-xs" data-toggle="modal" data-target="#myModalProdotti"><i class="fa fa-plus-circle"></i> Aggiungi</button>
       </div>
 
       <div class="panel-body">
@@ -15,10 +15,12 @@ $rs_resultATPR = selectreqID("V_ATTIVITA_PRODOTTI",$idat);
             <tr>
               <th style="width:20px">
 
-              </th>
-              <th style="width:20px">
+             </th>
 
-              </th>
+            <!--  <th style="width:20px">
+
+              </th>-->
+
               <th>
                 ID
               </th>
@@ -32,7 +34,13 @@ $rs_resultATPR = selectreqID("V_ATTIVITA_PRODOTTI",$idat);
                 categoria
               </th>
               <th>
-              Prezzo
+                in uso
+              </th>
+              <th>
+                Prezzo
+              </th>
+              <th>
+                U.M.
               </th>
             </tr>
           </thead>
@@ -44,7 +52,7 @@ $rs_resultATPR = selectreqID("V_ATTIVITA_PRODOTTI",$idat);
               <tr>
 
                 <td>
-                  <a href="#" onclick="deleterecord(<? echo $IDATT; ?> ,<? echo $rowATPR["ID_PRODOTTO"]; ?>);return false;">
+                  <a href="#" onclick="deleterecordAttProd(<? echo $idat; ?> ,<? echo $rowATPR["ID_PRODOTTO"]; ?>);return false;">
                     <p class="text-center">
                       <i class="fa fa-times fa-fw"></i>
                     </p>
@@ -52,33 +60,34 @@ $rs_resultATPR = selectreqID("V_ATTIVITA_PRODOTTI",$idat);
 
                 </td>
 
-                <td>
+              <!--  <td>
                   <a href="#" data-toggle="modal"
-                  data-target="#exampleModal"
-                  data-idint="<? echo $IDATT; ?>"
-                  data-idrecord="<? echo $rowATPR["NOME"]; ?>"
-                  data-titolo="<? echo $rowATPR["MARCA"]; ?>"
-                  data-descrizione="<? echo $rowATPR["CATEGORIA"]; ?>"
-                  data-dateinizio="<? echo $rowATPR["PREZZO"]; ?>"
-                  data-datefine="<? echo $rowATPR["IN_USO"]; ?>">
+                  data-target="#prodottiModal"
+                  data-idatt="<? echo $IDATT; ?>"
+                  data-nome="<? echo $rowATPR["NOME"]; ?>"
+                  data-marca="<? echo $rowATPR["MARCA"]; ?>"
+                  data-categoria="<? echo $rowATPR["CATEGORIA"]; ?>"
+                  data-prezzo="<? echo $rowATPR["PREZZO"]; ?>"
+                    data-um="<? echo $rowATPR["UM"]; ?>"
+                  data-inuso="<? echo $rowATPR["IN_USO"]; ?>">
                   <p class="text-center">
                     <i class="fa fa-edit fa-fw"></i>
                   </p>
                 </a>
 
+              </td> -->
+
+
+              <td>
+                <?  echo $rowATPR["ID_PRODOTTO"]; ?>
               </td>
 
-                <td>
-                  <?  echo $rowATPR["ID"]; ?>
-                </td>
               <td>
-
                 <div class="fontColor">
                   <strong>
                     <?  echo $rowATPR["NOME"]; ?>
                   </strong>
                 </div>
-
               </td>
               <td>
                 <?  echo $rowATPR["MARCA"]; ?>
@@ -88,7 +97,13 @@ $rs_resultATPR = selectreqID("V_ATTIVITA_PRODOTTI",$idat);
                 <?  echo $rowATPR["CATEGORIA"]; ?>
               </td>
               <td>
+                <?  echo $rowATPR["IN_USO"]; ?>
+              </td>
+              <td>
                 <?  echo $rowATPR["PREZZO"]; ?>
+              </td>
+              <td>
+                <?  echo $rowATPR["UM"]; ?>
               </td>
             </tr>
             <?php
@@ -100,6 +115,8 @@ $rs_resultATPR = selectreqID("V_ATTIVITA_PRODOTTI",$idat);
   </div>
 </div>
 </div>
+
+
 
 <?php
 include('modalprodotti.php');
