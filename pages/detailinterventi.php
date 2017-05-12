@@ -21,8 +21,8 @@ include('master.php');
 
   include('../php/selectDB.php');
 
-    $id = $_GET['recordid'];
-    $idat = $_GET['idatt'];
+  $id = $_GET['recordid'];
+  $idat = $_GET['idatt'];
 
   $rs_result = selectreqID("V_INTERVENTI",$id);
 
@@ -55,12 +55,12 @@ include('master.php');
 
           include('attivita.php');
 
-if ($idat == 0){
-    include('emptydetailprodotti.php');
+          if ($idat == 0){
+            include('emptydetailprodotti.php');
 
-}else{
-  include('detailprodotti.php');
-}
+          }else{
+            include('detailprodotti.php');
+          }
 
           ?>
 
@@ -90,9 +90,10 @@ function deleterecordAttProd(ID_ATT,ID_PROD) {
   if (agree)
   {
 
-//alert("tablename=attivitaprodotto&"+"idattivita="+ID_ATT+"&idprodotto="+ID_PROD);
+    //alert("tablename=attivitaprodotto&"+"idattivita="+ID_ATT+"&idprodotto="+ID_PROD);
 
-console.log("tablename=attivitaprodotto&"+"idattivita="+ID_ATT+"&idprodotto="+ID_PROD);
+    console.log("tablename=attivitaprodotto&"+"idattivita="+ID_ATT+"&idprodotto="+ID_PROD);
+
     $.ajax({
       type: "POST",
       url: "../php/prodottoDB.php",
@@ -151,69 +152,69 @@ function deleterecord(ID_INT,ID_ATT) {
 $(document).ready(function() {
 
   /*if (<? echo $idat; ?> == 0){
-    var TableProd = document.getElementById("tableProdotti");
+  var TableProd = document.getElementById("tableProdotti");
   var selAttivita = document.getElementById("selAttivita");
 
-    TableProd.style.visibility = 'hidden';      // Hide
+  TableProd.style.visibility = 'hidden';      // Hide
   selAttivita.style.visibility = 'visible';
-       // Show
-  }else{
+  // Show
+}else{
 
-    var TableProd = document.getElementById("tableProdotti");
-  var selAttivita = document.getElementById("selAttivita");
+var TableProd = document.getElementById("tableProdotti");
+var selAttivita = document.getElementById("selAttivita");
 
-    selAttivita.style.visibility = 'hidden';      // Hide
-  TableProd.style.visibility = 'visible';     // Show
+selAttivita.style.visibility = 'hidden';      // Hide
+TableProd.style.visibility = 'visible';     // Show
 
 }*/
 
-  $('#dtinterventi').DataTable({
-    //ordina i risultati
-    "order": [[1, "asc"]],
-    autoFill: true,
-    //abilita il response della tabella
-    responsive: true
-  });
+$('#dtinterventi').DataTable({
+  //ordina i risultati
+  "order": [[1, "asc"]],
+  autoFill: true,
+  //abilita il response della tabella
+  responsive: true
+});
 
-  $('#dtattivita').DataTable({
+$('#dtattivita').DataTable({
 
-    //ordina i risultati
-    "order": [[4, "asc"]],
-    autoFill: true,
-    //abilita il response della tabella
-    responsive: true
-  });
+  //ordina i risultati
+  "order": [[4, "asc"]],
+  autoFill: true,
+  //abilita il response della tabella
+  responsive: true
+});
 
-  $('#dtprodotti').DataTable({
-    //ordina i risultati
-    "order": [[2, "asc"]],
-    autoFill: true,
-    //abilita il response della tabella
-    responsive: true
-  });
+$('#dtprodotti').DataTable({
+  //ordina i risultati
+  "order": [[2, "asc"]],
+  autoFill: true,
+  //abilita il response della tabella
+  responsive: true
+});
 
-  //evento che intercetta la selezione della riga
-  var table = $('#dtattivita').DataTable();
-  $('#dtattivita tbody').on('click', 'tr', function () {
+//evento che intercetta la selezione della riga
+var table = $('#dtattivita').DataTable();
+$('#dtattivita tbody').on('click', 'tr', function () {
 
-    //var Row = document.getElementById("ID_ATTIVITA_SEL");
+  //var Row = document.getElementById("ID_ATTIVITA_SEL");
   //  var Cells = Row.getElementsByTagName("td");
   //  alert(Cells[0].innerText);
 
   var idattsel = this.cells[2].innerText;
   //alert(idattsel);
-    var myDiv = document.getElementById("idint");
+  var myDiv = document.getElementById("idint");
 
 
   myDiv.value=idattsel;
 
-//  alert(myDiv.value);
-//  document.cookie = "idattivitasel="+data[1];
+  //  alert(myDiv.value);
+  //  document.cookie = "idattivitasel="+data[1];
 
-    window.location="detailinterventi.php?recordid=<?echo $id; ?>&idatt="+  myDiv.value;
+  window.location="detailinterventi.php?recordid=<?echo $id; ?>&idatt="+  myDiv.value;
 
 
-  });
+});
 
 });
 
