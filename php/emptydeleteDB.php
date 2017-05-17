@@ -9,11 +9,19 @@ if (delterecord('clienti')) {
     if (delterecord('prodotti')) {
 
       if (delterecord('interventi')) {
-          echo "Svuotato con successo";
-          return "Svuotato con successo";
+
+      if (delterecord('attivita')) {
+
+        echo "Svuotato con successo";
+        return "Svuotato con successo";
+
       }else{
-        echo "ERRORE INTERVNETI";
-        return "ERRORE INTERVNETI";
+        echo "ERRORE ATTIVITA";
+        return "ERRORE ATTIVITA";
+        }
+      }else{
+        echo "ERRORE INTERVENTI";
+        return "ERRORE INTERVENTI";
       }
     }else{
       echo "ERRORE PRODOTTI";

@@ -310,6 +310,80 @@ include('master.php');
     </div>
   </div>
 
+<!------------------------------------------------------------------------------>
+
+<?php
+$rs_resultAT = selectDelete("attivita");
+?>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+      <!--  Attività <button type="button" class="btn pull-right btn-info btn-xs" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus-circle"></i> Aggiungi</button> -->
+      </div>
+
+      <div class="panel-body">
+        <table width="100%" class="table table-striped table-bordered table-hover" id="dtattivita" >
+
+          <thead>
+            <tr>
+              <th>
+                ID
+              </th>
+              <th>
+                <strong>Titolo</strong>
+              </th>
+              <th>
+                Descrizione
+              </th>
+              <th>
+                <strong>Data Inizio</strong>
+              </th>
+              <th>
+                Data Fine
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <?php
+            while($rowAT = $rs_resultAT->fetch_assoc()) {
+              ?>
+              <tr>
+              <td>
+                <? echo $rowAT["ID"]; ?>
+              </td>
+              <td>
+
+                <div class="fontColor">
+                  <strong>
+                    <?  echo $rowAT["TITOLO"]; ?>
+                  </strong>
+                </div>
+
+              </td>
+              <td>
+                <?  echo $rowAT["DESCRIZIONE"]; ?>
+
+              </td>
+              <td>
+                <?  echo $rowAT["DATA_INIZIO"]; ?>
+              </td>
+              <td>
+                <?  echo $rowAT["DATA_FINE"]; ?>
+              </td>
+            </tr>
+            <?php
+          };
+          ?>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>
+
+<!------------------------------------------------------------------------------>
 
 </div>
 <!-- /#page-wrapper -->
@@ -365,6 +439,9 @@ $(document).ready(function() {
     responsive: true
   });
   $('#dtinterventi').DataTable({
+    responsive: true
+  });
+  $('#dtattivita').DataTable({
     responsive: true
   });
 });

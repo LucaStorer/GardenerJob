@@ -179,7 +179,7 @@ $('#dtinterventi').DataTable({
 $('#dtattivita').DataTable({
 
   //ordina i risultati
-  "order": [[4, "asc"]],
+  "order": [[5, "asc"]],
   autoFill: true,
   //abilita il response della tabella
   responsive: true
